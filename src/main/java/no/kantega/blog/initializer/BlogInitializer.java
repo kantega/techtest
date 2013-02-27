@@ -2,7 +2,7 @@ package no.kantega.blog.initializer;
 
 import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.filter.CharEncodingFilter;
-import org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource;
+import org.apache.derby.jdbc.ClientConnectionPoolDataSource;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.ServletContainerInitializer;
@@ -45,8 +45,10 @@ public class BlogInitializer implements ServletContainerInitializer{
     private DataSource initializeDatasource() throws ServletException {
 
         System.setProperty("derby.stream.error.file", "target/derby.log");
-        EmbeddedConnectionPoolDataSource dataSource = new EmbeddedConnectionPoolDataSource();
+        ClientConnectionPoolDataSource dataSource = new ClientConnectionPoolDataSource ();
 
+        dataSource.setPortNumber(1527);
+        dataSource.setServerName("localhost");
         dataSource.setCreateDatabase("create");
 
         dataSource.setDatabaseName("target/blogdb");

@@ -123,8 +123,7 @@ Something __really__ weird happend today on my way to school:
             </c:choose>
         </p>
         <div class="commentForm" id="commentFor_${post.blogPostId}">
-            <form action="${blog.linkId}" method="post">
-                <input type="hidden" name="blogPostId" value="${post.blogPostId}">
+            <form action="${blog.linkId}/${post.linkId}" method="post">
                 <label for="commentAuthor">Who are you</label>: <input id="commentAuthor" name="commentAuthor" type="text" size="80" value="John Doe">
                 <br>
                 <textarea name="content" cols="80" rows="10">I really like...</textarea>
