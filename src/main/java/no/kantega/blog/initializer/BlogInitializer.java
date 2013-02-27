@@ -61,7 +61,7 @@ public class BlogInitializer implements ServletContainerInitializer{
             Statement statement = connection.createStatement();
             List<String> statements = Arrays.asList(
                     "create table blog (blogid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                            " blogname varchar(255), " +
+                            " blogname varchar(255) NOT NULL UNIQUE, " +
                             " color varchar(7) )",
 
                     "create table blogpost (blogpostid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
@@ -81,10 +81,6 @@ public class BlogInitializer implements ServletContainerInitializer{
             for (String sql : statements) {
                 statement.execute(sql);
             }
-
-            statement.close();
-            connection.close();
-
 
         } catch (SQLException e) {
             if(!"X0Y32".equals(e.getSQLState())) {
