@@ -104,7 +104,7 @@ public class BlogServlet extends HttpServlet {
 
         dao.saveOrUpdate(comment);
 
-        resp.sendRedirect(post.getLinkId() +"#commentsFor_" + post.getBlogPostId());
+        resp.sendRedirect(post.getLinkId());
 
 
 
