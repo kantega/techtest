@@ -63,6 +63,14 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.0.0.RC1</version>
+                <configuration>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>visualvm.display.name</name>
+                            <value>TechBlog</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>

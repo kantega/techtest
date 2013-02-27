@@ -2,7 +2,8 @@ package no.kantega.blog.initializer;
 
 import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.filter.CharEncodingFilter;
-import org.apache.derby.jdbc.ClientConnectionPoolDataSource;
+import no.kantega.blog.listener.BlogSessionListener;
+import org.apache.derby.jdbc.ClientConnectionPoolDataSource40;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.ServletContainerInitializer;
@@ -30,6 +31,8 @@ public class BlogInitializer implements ServletContainerInitializer{
     public void onStartup(Set<Class<?>> classes, ServletContext servletContext) throws ServletException {
         Logger.getLogger(getClass().getName()).info("Starting up");
 
+        servletContext.addListener(BlogSessionListener.class);
+
         addService(DataSource.class, initializeDatasource(), servletContext);
 
         addService(BlogDao.class, new BlogDao(getService(DataSource.class, servletContext)), servletContext);
@@ -45,7 +48,7 @@ public class BlogInitializer implements ServletContainerInitializer{
     private DataSource initializeDatasource() throws ServletException {
 
         System.setProperty("derby.stream.error.file", "target/derby.log");
-        ClientConnectionPoolDataSource dataSource = new ClientConnectionPoolDataSource ();
+        ClientConnectionPoolDataSource40 dataSource = new ClientConnectionPoolDataSource40();
 
         dataSource.setPortNumber(1527);
         dataSource.setServerName("localhost");
