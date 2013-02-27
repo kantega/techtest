@@ -48,6 +48,12 @@
             <artifactId>spring-jdbc</artifactId>
             <version>3.2.1.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

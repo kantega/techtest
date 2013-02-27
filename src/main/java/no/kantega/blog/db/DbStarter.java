@@ -13,6 +13,8 @@ public class DbStarter {
 
     public static void main(String[] args) throws Exception {
 
+        System.setProperty("derby.system.home", "target");
+
         System.setProperty("visualvm.display.name", "TechBlogDB");
         System.out.println("Starting database");
 

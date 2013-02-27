@@ -33,3 +33,11 @@ td {
     display: block;
     margin: 1em;
 }
+
+
+#dataSourceInfo {
+    float:right;
+    width:250px;
+    border: 1px solid black;
+    font-size:smaller;
+}

@@ -3,7 +3,8 @@ package no.kantega.blog.initializer;
 import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.filter.CharEncodingFilter;
 import no.kantega.blog.listener.BlogSessionListener;
-import org.apache.derby.jdbc.ClientConnectionPoolDataSource40;
+import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.derby.jdbc.ClientDriver40;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.ServletContainerInitializer;
@@ -47,18 +48,16 @@ public class BlogInitializer implements ServletContainerInitializer{
 
     private DataSource initializeDatasource() throws ServletException {
 
-        System.setProperty("derby.stream.error.file", "target/derby.log");
-        ClientConnectionPoolDataSource40 dataSource = new ClientConnectionPoolDataSource40();
 
-        dataSource.setPortNumber(1527);
-        dataSource.setServerName("localhost");
-        dataSource.setCreateDatabase("create");
-
-        dataSource.setDatabaseName("target/blogdb");
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(ClientDriver40.class.getName());
+        dataSource.setUrl("jdbc:derby://localhost:1527/blogdb;create=true");
 
 
+
+        Connection connection = null;
         try {
-            Connection connection = dataSource.getConnection();
+            connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             List<String> statements = Arrays.asList(
                     "create table blog (blogid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
@@ -90,6 +89,14 @@ public class BlogInitializer implements ServletContainerInitializer{
         } catch (SQLException e) {
             if(!"X0Y32".equals(e.getSQLState())) {
                 throw new ServletException(e);
+            }
+        } finally {
+            if(connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    // Don't care
+                }
             }
         }
         return dataSource;

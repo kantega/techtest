@@ -7,9 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -47,7 +45,17 @@ public class BlogDao {
     public void saveOrUpdate(Blog blog) {
 
         if (blog.isNew()) {
-            template.update("INSERT INTO blog (blogname, color) VALUES (?, ?)", blog.getName(), blog.getColor());
+            Connection con;
+            try {
+                con = template.getDataSource().getConnection();
+                PreparedStatement statement = con.prepareStatement("INSERT INTO blog (blogname, color) VALUES (?, ?)");
+                statement.setString(1, blog.getName());
+                statement.setString(2, blog.getColor());
+                statement.executeUpdate();
+                con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             template.update("update blog set blogname=?, color=? where blogid=?", blog.getName(), blog.getColor(), blog.getId());
         }

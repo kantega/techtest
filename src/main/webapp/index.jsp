@@ -5,6 +5,7 @@
 <c:set var="main" scope="request">
     <h1>Testing workshop</h1>
 
+    <jsp:include page="WEB-INF/jsp/databasestatus.jsp"/>
 
     <a href="blogs">Blogs</a>
 
