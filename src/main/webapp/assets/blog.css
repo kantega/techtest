@@ -1,0 +1,35 @@
+body {
+    font-family: sans-serif;
+}
+
+td {
+    vertical-align: top;
+}
+
+.missingField {
+    color:red;
+}
+
+.publishDate {
+    font-size: smaller;
+    font-style: italic;
+}
+
+.numComments {
+    font-size: smaller;
+}
+
+.commentForm, .comment {
+    background-color: white;
+    display: none;
+    padding: 1em;
+    border: 1px solid gray;
+
+
+}
+
+.comment {
+    font-size: small;
+    display: block;
+    margin: 1em;
+}
