@@ -61,9 +61,7 @@ public class BlogServlet extends HttpServlet {
         String requestURI = req.getRequestURI().substring("/blog/".length());
 
         String blogName = URLDecoder.decode(requestURI, "utf-8");
-        if(blogName.contains("/")) {
-            blogName = blogName.substring(0, blogName.indexOf('/'));
-        }
+
 
         return dao.getBlogByName(blogName);
     }
