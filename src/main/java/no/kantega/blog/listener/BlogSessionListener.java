@@ -4,28 +4,29 @@ import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.model.Blog;
 import no.kantega.blog.model.BlogPost;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import static no.kantega.blog.services.Services.addService;
 import static no.kantega.blog.services.Services.getService;
 
 /**
  *
  */
-public class BlogSessionListener implements HttpSessionListener, ServletContextListener {
-    private AtomicLong sessionCounter = new AtomicLong();
+public class BlogSessionListener implements HttpSessionListener {
+    private ConcurrentHashMap<String, HttpSession> sessions = new ConcurrentHashMap<>();
+    private AtomicInteger getTotalSessionCount = new AtomicInteger();
 
     @Override
     public void sessionCreated(HttpSessionEvent sessionEvent) {
 
+        HttpSession session = sessionEvent.getSession();
         try {
-            BlogDao dao = getService(BlogDao.class, sessionEvent.getSession().getServletContext());
+            BlogDao dao = getService(BlogDao.class, session.getServletContext());
 
             Map<String, BlogPost> blogPostCache = new HashMap<String, BlogPost>();
 
@@ -36,31 +37,33 @@ public class BlogSessionListener implements HttpSessionListener, ServletContextL
                 }
             }
 
-            sessionEvent.getSession().setAttribute("blogPostCache", blogPostCache);
+            session.setAttribute("blogPostCache", blogPostCache);
 
 
             // 8 hours sessions
-            sessionEvent.getSession().setMaxInactiveInterval(8*60*60);
+            session.setMaxInactiveInterval(8 * 60 * 60);
         } finally {
-            sessionCounter.incrementAndGet();
+            sessions.put(session.getId(), session);
+            getTotalSessionCount.incrementAndGet();
         }
     }
 
     public long getCurrentSessionCount() {
-        return sessionCounter.get();
+        return sessions.size();
     }
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        sessionCounter.decrementAndGet();
+        sessions.remove(httpSessionEvent.getSession().getId());
     }
 
-    @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
-        addService(BlogSessionListener.class, this, servletContextEvent.getServletContext());
+    public void invalidateAllSessions() {
+        for(HttpSession session : sessions.values()) {
+            session.invalidate();
+        }
     }
 
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
+    public int getTotalSessionCount() {
+        return getTotalSessionCount.get();
     }
+
 }

@@ -7,8 +7,6 @@ import no.kantega.blog.model.BlogPostComment;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.HttpMethodConstraint;
-import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +25,7 @@ import static no.kantega.blog.services.Services.getService;
 public class BlogServlet extends HttpServlet {
 
     private BlogDao dao;
+    private volatile String content;
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
@@ -35,7 +34,7 @@ public class BlogServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(isBlogRequest(req)) {
+        if(isBlogPostRequest(req)) {
             BlogPost post = getBlogPost(req);
             req.setAttribute("post", post);
             req.setAttribute("comments", dao.getComments(post));
@@ -52,7 +51,7 @@ public class BlogServlet extends HttpServlet {
 
     }
 
-    private boolean isBlogRequest(HttpServletRequest req) {
+    private boolean isBlogPostRequest(HttpServletRequest req) {
         return req.getRequestURI().indexOf('/', "/blog/".length()) != -1;
     }
 
@@ -81,6 +80,7 @@ public class BlogServlet extends HttpServlet {
         if(isComment(req)) {
             postBlogComment(req, resp);
         } else {
+            content = req.getParameter("content");
             postBlogEntry(req, resp, getBlog(req));
         }
 
@@ -111,8 +111,6 @@ public class BlogServlet extends HttpServlet {
 
     private void postBlogEntry(HttpServletRequest req, HttpServletResponse resp, Blog blog) throws IOException {
         String title = req.getParameter("title");
-
-        String content = req.getParameter("content");
 
         BlogPost post = new BlogPost(blog);
 

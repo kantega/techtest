@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>${title}</title>
+    <title>Kantega testing workshop - ${title}</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/blog.css">
     <style type="text/css">
         body {

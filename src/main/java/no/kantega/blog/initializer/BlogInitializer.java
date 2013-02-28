@@ -32,13 +32,19 @@ public class BlogInitializer implements ServletContainerInitializer{
     public void onStartup(Set<Class<?>> classes, ServletContext servletContext) throws ServletException {
         Logger.getLogger(getClass().getName()).info("Starting up");
 
-        servletContext.addListener(BlogSessionListener.class);
+        configureSessionListener(servletContext);
 
         addService(DataSource.class, initializeDatasource(), servletContext);
 
         addService(BlogDao.class, new BlogDao(getService(DataSource.class, servletContext)), servletContext);
 
         configureCharEncFilter(servletContext);
+    }
+
+    private void configureSessionListener(ServletContext servletContext) throws ServletException {
+        BlogSessionListener blogSessionListener = servletContext.createListener(BlogSessionListener.class);
+        servletContext.addListener(blogSessionListener);
+        addService(BlogSessionListener.class, blogSessionListener, servletContext);
     }
 
     private void configureCharEncFilter(ServletContext servletContext) {
@@ -54,6 +60,7 @@ public class BlogInitializer implements ServletContainerInitializer{
         dataSource.setUrl("jdbc:derby://localhost:1527/blogdb;create=true");
 
 
+        //dataSource.setMaxActive(50);
 
         Connection connection = null;
         try {

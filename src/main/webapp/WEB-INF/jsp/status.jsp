@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="title" value="Techtest Workshop" scope="request"/>
+<c:set var="title" value="System status" scope="request"/>
 
 <c:set var="main" scope="request">
 
@@ -70,6 +70,12 @@
 
 </table>
 
+    <h2>Sessions</h2>
+    <p>Current active sessions: ${activeSessionCount}</p>
+    <p>Total sessions created: ${totalSessionCount}</p>
+    <form action="status" method="POST">
+        <input type="submit" name="invalidateSessions" value="Invalidate sessions" >
+    </form>
 </c:set>
 
 <jsp:include page="design.jsp"/>

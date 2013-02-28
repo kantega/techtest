@@ -1,5 +1,7 @@
 package no.kantega.blog.status;
 
+import no.kantega.blog.listener.BlogSessionListener;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +24,18 @@ public class StatusServlet extends HttpServlet {
         request.setAttribute("dataSource", getService(DataSource.class, request.getServletContext()));
 
         request.setAttribute("memory", ManagementFactory.getMemoryMXBean());
+        request.setAttribute("activeSessionCount", getService(BlogSessionListener.class, request.getServletContext()).getCurrentSessionCount());
+        request.setAttribute("totalSessionCount", getService(BlogSessionListener.class, request.getServletContext()).getTotalSessionCount());
         request.getRequestDispatcher("/WEB-INF/jsp/status.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if(request.getParameter("invalidateSessions") != null ) {
+            getService(BlogSessionListener.class, request.getServletContext()).invalidateAllSessions();
+        }
+
+        response.sendRedirect("status");
     }
 }
