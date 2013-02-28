@@ -11,10 +11,13 @@
 
     <h2>Tasks:</h2>
 
-    <h3>Task 0: Download JMeter</h3>
-    <p>
-        <a href="http://jmeter.apache.org">http://jmeter.apache.org</a>
-    </p>
+    <h3>Task 0: Tools</h3>
+    <ul>
+
+        <li><a href="http://jmeter.apache.org">http://jmeter.apache.org</a></li>
+        <li><a href="http://visualvm.java.net">http://visualvm.java.net</a></li>
+
+    </ul>
     <h3>Task 1: Measure simple, single threaded performance</h3>
 
     <h3>Task 2: Stability</h3>
