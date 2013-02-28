@@ -16,6 +16,9 @@
 </head>
 
 <body>
+<div class="status">
+<a  href="<%=request.getContextPath()%>/status">Status</a>
+</div>
 ${main}
 </body>
 </html>

@@ -6,6 +6,10 @@ td {
     vertical-align: top;
 }
 
+td.numeric {
+    text-align: right;
+}
+
 .missingField {
     color:red;
 }
@@ -35,9 +39,9 @@ td {
 }
 
 
-#dataSourceInfo {
-    float:right;
-    width:250px;
-    border: 1px solid black;
-    font-size:smaller;
+.status {
+    position: fixed;
+    right: 1em;
+    top:0;
+    width: 10em;
 }

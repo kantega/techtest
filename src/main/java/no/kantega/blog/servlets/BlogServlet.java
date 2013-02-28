@@ -24,7 +24,6 @@ import static no.kantega.blog.services.Services.getService;
  *
  */
 @WebServlet(urlPatterns = "/blog/*")
-@ServletSecurity(httpMethodConstraints = @HttpMethodConstraint("GET"))
 public class BlogServlet extends HttpServlet {
 
     private BlogDao dao;

@@ -106,7 +106,7 @@ Something __really__ weird happend today on my way to school:
     <c:forEach var="post" items="${posts}">
 
         <a href="<%=request.getContextPath()%>/blog/${post.blog.linkId}/${post.linkId}">
-            <h2>${post.title} ${post.blogPostId}</h2>
+            <h2>${post.title}</h2>
         </a>
         <p class="publishDate">Published ${post.getPublishDateInFormat('yyyy-MM-dd HH:mm')}</p>
 <script type="text/html" class="content"><c:out value="${post.content}"/></script>
