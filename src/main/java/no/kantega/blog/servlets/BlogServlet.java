@@ -78,9 +78,9 @@ public class BlogServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if(isComment(req)) {
+            content = req.getParameter("content");
             postBlogComment(req, resp);
         } else {
-            content = req.getParameter("content");
             postBlogEntry(req, resp, getBlog(req));
         }
 
@@ -93,8 +93,6 @@ public class BlogServlet extends HttpServlet {
     private void postBlogComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         BlogPost post = getBlogPost(req);
         String author = req.getParameter("commentAuthor");
-        String content = req.getParameter("content");
-
 
         BlogPostComment comment = new BlogPostComment(post);
 
@@ -111,6 +109,8 @@ public class BlogServlet extends HttpServlet {
 
     private void postBlogEntry(HttpServletRequest req, HttpServletResponse resp, Blog blog) throws IOException {
         String title = req.getParameter("title");
+        String content = req.getParameter("content");
+
 
         BlogPost post = new BlogPost(blog);
 

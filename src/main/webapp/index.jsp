@@ -34,7 +34,11 @@
         Keep an eye on the <a href="status">status page</a> to see what happens with the connection pool.
     </p>
 
-    <h3>Task 3: </h3>
+    <h3>Task 3: Concurrency</h3>
+
+    <p>
+        What happens when two or more users try to post comments concurrently?
+    </p>
 
 </c:set>
 
