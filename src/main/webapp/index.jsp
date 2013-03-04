@@ -25,20 +25,33 @@
         <li>Comment on it!</li>
     </ul>
 
+
+    <h3>Interlude</h3>
+    <p>Instructions on how to write simple read-only test to open index, go to own blog, open a comment. HTTP GET.</p>
+    <p>Introduce: Thread groups, reports, samplers, assertions, http common. Not cookie managers!</p>
+
     <h3>Task 2: Measure simple, single threaded performance</h3>
 
     <p>Getting to know the application and using JMeter</p>
+    <p>Expand the test from the interlude to add posts and comments</p>
 
     <h3>Task 3: Scalability</h3>
 
     <p>
         Database connection pool too small? Locking? Too synchronized?
+        Show status page?
+
+        <ul>
+           <li>Users: Synchronize db pool</li>
+           <li>Volume: n+1 select</li>
+        </ul>
     </p>
 
     <h3>Task 4: Stability</h3>
 
     <p>
         Memory leaks with session? Use of Cookie manager.
+        Show JVisual VM.
     </p>
 
     <h3>Task 5: Fault tolerance testing</h3>
