@@ -13,7 +13,7 @@
 
             for(var i = 0, l = contents.length; i < l; i++) {
                 var script = contents[i];
-                var markup = markdown.toHTML(script.innerText)
+                var markup = markdown.toHTML(script.innerHTML)
                 var div = document.createElement("div")
                 div.innerHTML = markup;
                 script.parentNode.replaceChild(div, script);
