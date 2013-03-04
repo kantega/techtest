@@ -70,6 +70,11 @@ public class BlogDao {
         return blogs.iterator().next();
     }
 
+    public void deleteBlogByName(String blogName) {
+        Blog blog = getBlogByName(blogName);
+        template.update("DELETE FROM blog WHERE blogname=?", blog.getName());
+    }
+
     public void saveOrUpdate(BlogPost post) {
         if (post.isNew()) {
             template.update("INSERT INTO blogpost (blogid, posttitle, postcontent, publishdate) VALUES (?, ?, ?, ?)",

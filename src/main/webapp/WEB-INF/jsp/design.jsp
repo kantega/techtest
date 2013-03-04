@@ -17,7 +17,8 @@
 
 <body>
 <div class="status">
-<a  href="<%=request.getContextPath()%>/status">Status</a>
+<a href="<%=request.getContextPath()%>/status">Status</a>
+<a href="<%=request.getContextPath()%>/admin">Admin</a>
 </div>
 ${main}
 </body>

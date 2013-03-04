@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static no.kantega.blog.services.Services.getService;
@@ -32,10 +33,22 @@ public class BlogsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("blogs", dao.getAllBlogs());
+        HttpSession session = req.getSession(true);
 
-        req.getRequestDispatcher("/WEB-INF/jsp/blogs.jsp").forward(req, resp);
+        String blogToDelete = req.getParameter("delete");
 
+        if(blogToDelete != null) {
+            Object admin = session.getAttribute(LoginServlet.ADMIN_SESSION_ATTRIBUTE);
+            if(admin != null) {
+                dao.deleteBlogByName(blogToDelete);
+            }
+            else
+                session.getServletContext().getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
+        }
+        else {
+            req.setAttribute("blogs", dao.getAllBlogs());
+            req.getRequestDispatcher("/WEB-INF/jsp/blogs.jsp").forward(req, resp);
+        }
     }
 
     @Override

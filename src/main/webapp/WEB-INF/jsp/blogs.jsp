@@ -51,6 +51,9 @@
     <c:forEach items="${blogs}" var="blog">
         <li>
             <a href="blog/${blog.linkId}">${blog.name}</a>
+            <c:if test="${sessionScope.admin != null}">
+                <a href="/blogs?delete=${blog.name}">Delete</a>
+            </c:if>
         </li>
     </c:forEach>
 
