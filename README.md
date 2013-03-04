@@ -16,7 +16,7 @@ Building the source code:
 
 Running the server:
 
-    JAVA_HOME=/opt/jdk1.7.0_04/ mvn jetty:run
+    JAVA_HOME=/opt/jdk1.7.0_04/ mvn jetty:run-forked
 
 To see a beautiful blog, you can now navigate to:
 
