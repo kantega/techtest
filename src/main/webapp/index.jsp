@@ -40,12 +40,11 @@
     <p>
         Database connection pool too small? Locking? Too synchronized?
         Show status page?
-
+    </p>
         <ul>
            <li>Users: Synchronize db pool</li>
            <li>Volume: n+1 select</li>
         </ul>
-    </p>
 
     <h3>Task 4: Stability</h3>
 
