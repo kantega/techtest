@@ -10,7 +10,7 @@
         window.addEventListener("load", function(e) {
             function updatePreview() {
                 document.querySelector("#contentPreview").innerHTML = markdown.toHTML(document.querySelector("#content").value);
-                document.querySelector("#titlePreview").innerText = document.querySelector("#title").value;
+                document.querySelector("#titlePreview").innerHTML = document.querySelector("#title").value;
             }
 
             function commentLinkClicked(event) {
@@ -23,14 +23,14 @@
             document.querySelector("#content").addEventListener("keyup", updatePreview);
             document.querySelector("#title").addEventListener("keyup", updatePreview);
 
-            document.querySelector("#content").innerText = document.querySelector("#defaultContent").innerText;
+            document.querySelector("#content").innerHTML = document.querySelector("#defaultContent").innerHTML;
             updatePreview();
 
             var contents = document.querySelectorAll("script.content");
 
             for(var i = 0, l = contents.length; i < l; i++) {
                 var script = contents[i];
-                var markup = markdown.toHTML(script.innerText)
+                var markup = markdown.toHTML(script.innerHTML)
                 var div = document.createElement("div")
                 div.innerHTML = markup;
                 script.parentNode.replaceChild(div, script);
