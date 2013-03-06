@@ -160,7 +160,7 @@ public class BlogDao {
     }
 
     public BlogPost getBlogPost(Blog blog, String postName) {
-        return getBlogPosts("where blog.blogid=? and blogpost.posttitle=?", blog.getId(), postName).iterator().next();
+        return getBlogPosts("where blogpost.blogid=? and blogpost.posttitle=?", blog.getId(), postName).iterator().next();
     }
 
     public List<BlogPostComment> getComments(final BlogPost post) {
