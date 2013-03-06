@@ -2,9 +2,9 @@
 
 <c:set var="main" scope="request">
 
-    <h1>Du er logget inn som admin!!</h1>
+    <h1>You are now logged in as an administrator.</h1>
 
-    Tilbake til <a href="/blogs">hovedsiden</a>.
+    Back to the <a href="/blogs">blogs</a>.
 
 </c:set>
 
