@@ -26,3 +26,5 @@ Running the server:
 To see a beautiful blog, you can now navigate to:
 
     http://localhost:8080/
+
+Username and password is admin/admin.
