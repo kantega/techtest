@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<c:set var="title" value="Blogs" scope="request"/>
+<c:set var="title" value="Blog Post" scope="request"/>
 
 <c:set var="head" scope="request">
     <script type="text/javascript" src="<%=request.getContextPath()%>/assets/markdown.js"></script>
