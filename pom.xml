@@ -8,6 +8,8 @@
     <properties>
         <derby.version>10.9.1.0</derby.version>
         <jetty.version>9.0.0.RC2</jetty.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <name>Kantega TechTest Webapp</name>
     <dependencies>
