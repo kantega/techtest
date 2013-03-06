@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <c:set var="title" value="Blogs" scope="request"/>
 
 <c:set var="head" scope="request">
@@ -14,7 +13,7 @@
             }
 
             function commentLinkClicked(event) {
-                var postId = event.target.getAttribute("postId");
+                var postId = event.target.getAttribute("data-postId");
                 document.querySelector("#commentFor_" + postId).style.display = 'inline-block';
                 event.target.parentNode.removeChild(event.target);
                 event.preventDefault()
@@ -71,11 +70,13 @@ Something __really__ weird happend today on my way to school:
 
 <c:set var="main" scope="request">
 
+    <a href="/blogs">Blogs</a>
+
     <h1>${blog.name}</h1>
 
     <a href="#" onclick="this.style.display='none';document.querySelector('#postform').style.display='block'">+ New blog post</a>
     <div id="postform" style="display: none">
-    <table style="width:100%">
+    <table style="width:100%" summary="blog posts">
         <tr>
             <td style="width: 50%">
                 <form action="${blog.linkId}" method="POST">
@@ -105,26 +106,26 @@ Something __really__ weird happend today on my way to school:
 
     <c:forEach var="post" items="${posts}">
 
-        <a href="<%=request.getContextPath()%>/blog/${post.blog.linkId}/${post.linkId}">
-            <h2>${post.title}</h2>
-        </a>
+        <h2>
+            <a href="<%=request.getContextPath()%>/blog/${post.blog.linkId}/${post.linkId}">${post.title}</a>
+        </h2>
         <p class="publishDate">Published ${post.getPublishDateInFormat('yyyy-MM-dd HH:mm')}</p>
 <script type="text/html" class="content"><c:out value="${post.content}"/></script>
         <p class="numComments">
 
             <c:choose>
                 <c:when test="${post.commentCount == 0}">
-                    Zero comments. <a href="#" class="formCommentLink" postId="${post.blogPostId}">Be the first to comment!</a>
+                    Zero comments. <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Be the first to comment!</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="">${post.commentCount} comments.
-                    <a href="#" class="formCommentLink" postId="${post.blogPostId}">Add a comment</a>
+                    <a href="">${post.commentCount} comments.</a>
+                    <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Add a comment</a>
                 </c:otherwise>
             </c:choose>
         </p>
         <div class="commentForm" id="commentFor_${post.blogPostId}">
             <form action="${blog.linkId}/${post.linkId}" method="post">
-                <label for="commentAuthor">Who are you</label>: <input id="commentAuthor" name="commentAuthor" type="text" size="80" value="John Doe">
+                <label for="commentAuthor_${post.blogPostId}">Who are you</label>: <input id="commentAuthor_${post.blogPostId}" name="commentAuthor" type="text" size="80" value="John Doe">
                 <br>
                 <textarea name="content" cols="80" rows="10">I really like...</textarea>
                 <br>

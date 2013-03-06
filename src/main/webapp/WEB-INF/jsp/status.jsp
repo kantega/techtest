@@ -8,7 +8,7 @@
     <h1>System status</h1>
 
     <h2>Database</h2>
-<table id="dataSourceInfo">
+<table id="dataSourceInfo" summary="information about database system resource usage">
     <tr>
         <td>Datasource:</td>
         <td>${dataSource['class'].simpleName}</td>
@@ -29,7 +29,7 @@
 
     <h2>Memory</h2>
 
-<table>
+<table summary="information about used memory">
     <tr>
         <th>Mem</th>
         <th>Used</th>

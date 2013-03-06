@@ -1,15 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="title" value="Blogs" scope="request"/>
-
-
 <c:set var="main" scope="request">
+
+    <a href="/">Front page</a>
 
     <form action="blogs" method="POST">
         <fieldset style="width: 500px">
             <legend>Create blog</legend>
 
-            <table>
+            <table summary="data entry for creating new blog">
                 <tr>
                     <td>
                         Name:

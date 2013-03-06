@@ -21,7 +21,7 @@
 
 
             function commentLinkClicked(event) {
-                var postId = event.target.getAttribute("postId");
+                var postId = event.target.getAttribute("data-postId");
                 document.querySelector("#commentFor_" + postId).style.display = 'inline-block';
                 event.target.parentNode.removeChild(event.target);
                 event.preventDefault()
@@ -44,8 +44,9 @@
 
 <c:set var="main" scope="request">
 
+        Blog: <a href="/blog/${post.blog.linkId}">${post.blog.name}</a>
 
-            <h2>${post.title} ${post.blogPostId}</h2>
+        <h2>${post.title} ${post.blogPostId}</h2>
 
         <p class="publishDate">Published ${post.getPublishDateInFormat('yyyy-MM-dd HH:mm')}</p>
         <script type="text/html" class="content"><c:out value="${post.content}"/></script>
@@ -53,11 +54,11 @@
 
             <c:choose>
                 <c:when test="${post.commentCount == 0}">
-                    Zero comments. <a href="#" class="formCommentLink" postId="${post.blogPostId}">Be the first to comment!</a>
+                    Zero comments. <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Be the first to comment!</a>
                 </c:when>
                 <c:otherwise>
                     ${post.commentCount} comments:
-                    <a href="#" class="formCommentLink" postId="${post.blogPostId}">Add a comment</a>
+                    <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Add a comment</a>
                 </c:otherwise>
             </c:choose>
         </p>
