@@ -3,6 +3,11 @@ techtest
 
 App for performance / stability testing workshop
 
+Requirements
+------------
+
+Needs Java 7 and JMeter 2.9 or newer.
+
 Getting started
 ---------------
 
