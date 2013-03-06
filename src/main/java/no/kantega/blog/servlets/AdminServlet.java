@@ -23,7 +23,9 @@ public class AdminServlet extends HttpServlet{
         if(admin != null) {
             session.getServletContext().getRequestDispatcher("/WEB-INF/jsp/admin.jsp").forward(req, resp);
         }
-        session.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
+        else {
+            resp.sendRedirect("/login");
+        }
     }
 
 

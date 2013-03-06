@@ -41,9 +41,10 @@ public class BlogsServlet extends HttpServlet {
             Object admin = session.getAttribute(LoginServlet.ADMIN_SESSION_ATTRIBUTE);
             if(admin != null) {
                 dao.deleteBlogByName(blogToDelete);
+                resp.sendRedirect("/blogs");
             }
             else
-                session.getServletContext().getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(req, resp);
+                req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
         }
         else {
             req.setAttribute("blogs", dao.getAllBlogs());

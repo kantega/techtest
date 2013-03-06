@@ -19,6 +19,9 @@
 <div class="status">
 <a href="<%=request.getContextPath()%>/status">Status</a>
 <a href="<%=request.getContextPath()%>/admin">Admin</a>
+<c:if test="${sessionScope.admin != null}">
+    <a href="<%=request.getContextPath()%>/logout">Log out</a>
+</c:if>
 </div>
 ${main}
 </body>

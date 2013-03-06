@@ -11,14 +11,23 @@ import java.io.IOException;
 /**
  * Servlet class for login
  */
-@WebServlet(urlPatterns = "/login/*")
+@WebServlet(urlPatterns = {"/login/*", "/logout"})
 public class LoginServlet extends HttpServlet {
 
     public static final String ADMIN_SESSION_ATTRIBUTE = "admin";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
+        HttpSession session = req.getSession(true);
+        Object admin = session.getAttribute(ADMIN_SESSION_ATTRIBUTE);
+
+        if(admin != null && req.getServletPath().equals("/logout")) {
+            session.removeAttribute(ADMIN_SESSION_ATTRIBUTE);
+            resp.sendRedirect("/blogs");
+        }
+        else {
+            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
+        }
     }
 
     @Override
@@ -32,7 +41,8 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute(ADMIN_SESSION_ATTRIBUTE, "admin");
             resp.sendRedirect("/blogs");
         }
-
-        session.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
+        else {
+            session.getServletContext().getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
+        }
     }
 }
