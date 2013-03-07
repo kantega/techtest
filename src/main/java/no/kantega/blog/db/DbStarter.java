@@ -15,6 +15,12 @@ public final class DbStarter {
     
     private DbStarter() {}
     
+    /**
+     * Main method. Starts and stops the database.
+     * 
+     * @param args Arguments to the main method. Needs none.
+     * @throws Exception In case it fails to start the database.
+     */
     public static void main(String[] args) throws Exception {
         System.setProperty("derby.system.home", "target");
         System.setProperty("visualvm.display.name", "TechBlogDB");

@@ -17,10 +17,20 @@ public class BlogDao {
 
     private final JdbcTemplate template;
 
+    /**
+     * Create a new Data Access Object.
+     * 
+     * @param dataSource the connection to the database to talk with 
+     */
     public BlogDao(DataSource dataSource) {
         this.template = new JdbcTemplate(dataSource);
     }
 
+    /**
+     * Return all blogs.
+     * 
+     * @return list of all blogs ordered by name 
+     */
     public List<Blog> getAllBlogs() {
         return getBlogsWhere("");
     }
@@ -42,8 +52,12 @@ public class BlogDao {
         return blog;
     }
 
+    /**
+     * Saves a blog post to the database.
+     * 
+     * @param blog the blog post to save 
+     */
     public void saveOrUpdate(Blog blog) {
-
         if (blog.isNew()) {
             Connection con;
             try {
@@ -62,6 +76,13 @@ public class BlogDao {
 
     }
 
+    /**
+     * Return a blog given an unique name.
+     * 
+     * @param blogName The name of the blog
+     * @return Blog with the given name
+     * @throws IllegalArgumentException If no blog with the given name can be found
+     */
     public Blog getBlogByName(String blogName) {
         List<Blog> blogs = getBlogsWhere(" where blogname=?", blogName);
         if(blogs.isEmpty()) {
@@ -80,6 +101,11 @@ public class BlogDao {
         template.update("DELETE FROM blog WHERE blogname=?", blog.getName());
     }
 
+    /**
+     * Saves a blog post.
+     * 
+     * @param post the blog post to save to the database 
+     */
     public void saveOrUpdate(BlogPost post) {
         if (post.isNew()) {
             template.update("INSERT INTO blogpost (blogid, posttitle, postcontent, publishdate) VALUES (?, ?, ?, ?)",
@@ -93,7 +119,6 @@ public class BlogDao {
                     post.getBlogPostId(),
                     post.getBlogPostId());
         }
-
     }
 
     /**
@@ -159,6 +184,22 @@ public class BlogDao {
         return getBlogPosts("where blogpost.blogpostid=?", blogPostId).iterator().next();
     }
 
+    /**
+     * Return a blog post given the blog and the name of the post.
+     * 
+     * @param blog The blog this post belongs to
+     * @param postName The name of the blog post
+     * @return The blog post if found
+     */
+    public BlogPost getBlogPost(Blog blog, String postName) {
+        return getBlogPosts("where blogpost.blogid=? and blogpost.posttitle=?", blog.getId(), postName).iterator().next();
+    }
+
+    /**
+     * Saves a blog comment.
+     * 
+     * @param comment blog comment to save to the database
+     */
     public void saveOrUpdate(BlogPostComment comment) {
         if(comment.isNew()) {
             template.update("INSERT INTO blogpostcomment (blogpostid, commentauthor, commentcontent, commentpublishdate) VALUES (?, ?, ?, ?)",
@@ -174,10 +215,6 @@ public class BlogDao {
                     comment.getBlogPostCommentId());
         }
 
-    }
-
-    public BlogPost getBlogPost(Blog blog, String postName) {
-        return getBlogPosts("where blogpost.blogid=? and blogpost.posttitle=?", blog.getId(), postName).iterator().next();
     }
 
     /**
