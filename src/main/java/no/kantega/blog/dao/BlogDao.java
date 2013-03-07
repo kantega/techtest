@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.List;
 
 /**
- *
+ * Database abstraction layer.
  */
 public class BlogDao {
 
@@ -70,6 +70,11 @@ public class BlogDao {
         return blogs.iterator().next();
     }
 
+    /**
+     * Delete a blog given its name.
+     * 
+     * @param blogName The name of the blog to delete
+     */
     public void deleteBlogByName(String blogName) {
         Blog blog = getBlogByName(blogName);
         template.update("DELETE FROM blog WHERE blogname=?", blog.getName());
@@ -91,6 +96,12 @@ public class BlogDao {
 
     }
 
+    /**
+     * Return all blog posts for a given blog.
+     * 
+     * @param blog The blog to read all blog post for
+     * @return List of blog posts in this blog
+     */
     public List<BlogPost> getBlogPosts(Blog blog) {
         return getBlogPosts("where blogpost.blogid=?", blog.getId());
     }
@@ -138,6 +149,12 @@ public class BlogDao {
         }
     }
 
+    /**
+     * Return a blog post given an id of the blog post.
+     * 
+     * @param blogPostId The id of the blog post
+     * @return The blog post with this ID
+     */
     public BlogPost getBlogPost(long blogPostId) {
         return getBlogPosts("where blogpost.blogpostid=?", blogPostId).iterator().next();
     }
@@ -163,6 +180,12 @@ public class BlogDao {
         return getBlogPosts("where blogpost.blogid=? and blogpost.posttitle=?", blog.getId(), postName).iterator().next();
     }
 
+    /**
+     * Return a list of comments for a given blog post.
+     * 
+     * @param post The blog post to read comments from
+     * @return List of comments for this blog post.
+     */
     public List<BlogPostComment> getComments(final BlogPost post) {
         String sql = "select blogpostcommentid, commentauthor, commentcontent, commentpublishdate from blogpostcomment where blogpostid=?";
         return template.query(sql, new RowMapper<BlogPostComment>() {
