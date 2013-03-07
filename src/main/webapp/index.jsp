@@ -32,7 +32,10 @@
     <h3>Task 2: Measure simple, single threaded performance</h3>
 
     <p>Getting to know the application and using JMeter</p>
-    <p>Expand the test from the interlude to add posts and comments</p>
+    <p>
+        Expand the test from the interlude to add posts and comments, according to the
+        <a href="loadProfile.jsp">load profile</a>
+    </p>
 
     <h3>Interlude</h3>
     <p>We must post data (comments), and check that the data vi posted is the one we are getting. (Kenneth)</p>
