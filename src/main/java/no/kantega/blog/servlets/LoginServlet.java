@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        if(username.equals(CORRECT_USERNAME) && password.equals(CORRECT_PASSWORD)) {
+        if(CORRECT_USERNAME.equals(username) && CORRECT_PASSWORD.equals(password)) {
             session.setAttribute(ADMIN_SESSION_ATTRIBUTE, username);
             resp.sendRedirect("/blogs");
         }

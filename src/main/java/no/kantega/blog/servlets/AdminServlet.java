@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet for admin page. Lets you see that you are logged in.
+ * Servlet for admin page.
+ * 
+ * Lets you see that you are logged in.
  */
 @WebServlet(urlPatterns = "/admin/*")
 public class AdminServlet extends HttpServlet{

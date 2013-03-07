@@ -16,7 +16,6 @@ import java.io.IOException;
 
 import static no.kantega.blog.services.Services.getService;
 
-
 /**
  * Lets you create, delete and list blogs.
  */
@@ -57,7 +56,6 @@ public class BlogsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("blogname");
-
         if(name == null || name.trim().isEmpty()) {
             request.setAttribute("nameIsMissing", Boolean.TRUE);
             doGet(request, response);
@@ -66,11 +64,9 @@ public class BlogsServlet extends HttpServlet {
 
         String color = request.getParameter("color");
 
-
         Blog blog = new Blog();
         blog.setName(name);
         blog.setColor(color);
-
         dao.saveOrUpdate(blog);
 
         response.sendRedirect("blogs");
