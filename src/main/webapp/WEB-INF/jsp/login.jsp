@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:set var="title" value="Login" scope="request"/>
+
 <c:set var="main" scope="request">
 
     <h2>Log in</h2>
