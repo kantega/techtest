@@ -18,7 +18,7 @@ import static no.kantega.blog.services.Services.getService;
 
 
 /**
- *
+ * Lets you create, delete and list blogs.
  */
 @WebServlet(urlPatterns = "/blogs")
 @ServletSecurity(httpMethodConstraints = @HttpMethodConstraint("GET"))
@@ -37,18 +37,20 @@ public class BlogsServlet extends HttpServlet {
 
         String blogToDelete = req.getParameter("delete");
 
-        if(blogToDelete != null) {
+        if (blogToDelete == null) {
+            // Show all blogs
+            req.setAttribute("blogs", dao.getAllBlogs());
+            req.getRequestDispatcher("/WEB-INF/jsp/blogs.jsp").forward(req, resp);
+        } else {
+            // Delete a single blog
             Object admin = session.getAttribute(LoginServlet.ADMIN_SESSION_ATTRIBUTE);
-            if(admin != null) {
+            if (admin == null) {
+                // Not logged in
+                req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
+            } else {
                 dao.deleteBlogByName(blogToDelete);
                 resp.sendRedirect("/blogs");
             }
-            else
-                req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
-        }
-        else {
-            req.setAttribute("blogs", dao.getAllBlogs());
-            req.getRequestDispatcher("/WEB-INF/jsp/blogs.jsp").forward(req, resp);
         }
     }
 
