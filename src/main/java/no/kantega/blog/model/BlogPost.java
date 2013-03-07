@@ -105,9 +105,10 @@ public class BlogPost {
      * @return part of URL used for this blog post
      */
     public String getLinkId()  {
-        if(title == null) {
-            return null;
-        }
+        return (title == null) ? null : getUrlEncodedName();
+    }
+
+    private String getUrlEncodedName() {
         try {
             return URLEncoder.encode(title, "utf-8");
         } catch (UnsupportedEncodingException e) {

@@ -52,9 +52,10 @@ public class Blog {
      * @return the id used in the link to this blog
      */
     public String getLinkId()  {
-        if (name == null) {
-            return null;
-        }
+        return (name == null) ? null : getUrlEncodedName();
+    }
+    
+    private String getUrlEncodedName() {
         try {
             return URLEncoder.encode(name, "utf-8");
         } catch (UnsupportedEncodingException e) {
