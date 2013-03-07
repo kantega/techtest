@@ -42,7 +42,14 @@
         What happens when two or more users try to post comments concurrently?
     </p>
 
-    <h3>Task 4: Scalability</h3>
+    <h3>Task 4: Fault tolerance testing</h3>
+    <p>
+        Create a JMeter test which demonstrates <a href="https://issues.apache.org/jira/browse/DBCP-28">this issue</a>.
+        The test should run database-dependent code with moderate load while the database is restarted.
+        Keep an eye on the <a href="status">status page</a> to see what happens with the connection pool.
+    </p>
+
+    <h3>Task 5: Scalability</h3>
     <p>
         Database connection pool too small? Locking? Too synchronized?
         Show status page?
@@ -53,17 +60,10 @@
            <li>Volume: n+1 select - get blog posts</li>
         </ul>
 
-    <h3>Task 5: Stability</h3>
+    <h3>Task 6: Stability</h3>
     <p>
         Memory leaks with session? Use of Cookie manager.
         Show JVisual VM.
-    </p>
-
-    <h3>Task 6: Fault tolerance testing</h3>
-    <p>
-        Create a JMeter test which demonstrates <a href="https://issues.apache.org/jira/browse/DBCP-28">this issue</a>.
-        The test should run database-dependent code with moderate load while the database is restarted.
-        Keep an eye on the <a href="status">status page</a> to see what happens with the connection pool.
     </p>
 
 </c:set>
