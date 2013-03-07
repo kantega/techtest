@@ -15,12 +15,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static no.kantega.blog.services.Services.getService;
 
 /**
- *
+ * Listen to created and destroyed sessions.
  */
 public class BlogSessionListener implements HttpSessionListener {
     private ConcurrentHashMap<String, HttpSession> sessions = new ConcurrentHashMap<>();
     private AtomicInteger getTotalSessionCount = new AtomicInteger();
 
+    /**
+     * Called when sessions are created.
+     * 
+     * @param sessionEvent Information about the session 
+     */
     @Override
     public void sessionCreated(HttpSessionEvent sessionEvent) {
 
@@ -28,7 +33,7 @@ public class BlogSessionListener implements HttpSessionListener {
         try {
             BlogDao dao = getService(BlogDao.class, session.getServletContext());
 
-            Map<String, BlogPost> blogPostCache = new HashMap<String, BlogPost>();
+            Map<String, BlogPost> blogPostCache = new HashMap<>();
 
 
             for(Blog blog : dao.getAllBlogs()) {
@@ -39,7 +44,6 @@ public class BlogSessionListener implements HttpSessionListener {
 
             session.setAttribute("blogPostCache", blogPostCache);
 
-
             // 8 hours sessions
             session.setMaxInactiveInterval(8 * 60 * 60);
         } finally {
@@ -48,20 +52,39 @@ public class BlogSessionListener implements HttpSessionListener {
         }
     }
 
-    public long getCurrentSessionCount() {
-        return sessions.size();
-    }
+    /**
+     * Called when a session is destroyed/invalidated (e.g. timeout).
+     * 
+     * @param httpSessionEvent Information about the session
+     */
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
         sessions.remove(httpSessionEvent.getSession().getId());
     }
 
+    /**
+     * Utility method to invalidate all sessions.
+     */
     public void invalidateAllSessions() {
         for(HttpSession session : sessions.values()) {
             session.invalidate();
         }
     }
 
+    /**
+     * Returns the number of sessions for statistics.
+     * 
+     * @return the number of current sessions
+     */
+    public long getCurrentSessionCount() {
+        return sessions.size();
+    }
+
+    /**
+     * Return the total number of sessions created.
+     * 
+     * @return Total number of sessions created
+     */
     public int getTotalSessionCount() {
         return getTotalSessionCount.get();
     }
