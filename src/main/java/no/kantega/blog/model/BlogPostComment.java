@@ -1,8 +1,9 @@
 package no.kantega.blog.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Locale;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 /**
  * Domain object representing a comment on a given blog post.
@@ -16,7 +17,7 @@ public class BlogPostComment {
     private long blogPostCommentId;
     private String author;
     private String content;
-    private Date publishDate;
+    private DateTime publishDate;
 
     /**
      * Create a new comment on a given blog post.
@@ -64,7 +65,7 @@ public class BlogPostComment {
         return blogPost;
     }
 
-    public Date getPublishDate() {
+    public DateTime getPublishDate() {
         return publishDate;
     }
 
@@ -75,10 +76,10 @@ public class BlogPostComment {
      * @return String representing the published date of the comment
      */
     public String getPublishDateInFormat(String format) {
-        return new SimpleDateFormat(format, Locale.US).format(publishDate);
+        return DateTimeFormat.forPattern(format).withLocale(Locale.US).print(publishDate);
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setPublishDate(Timestamp publishDate) {
+        this.publishDate = new DateTime(publishDate);
     }
 }

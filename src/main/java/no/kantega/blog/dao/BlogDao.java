@@ -211,7 +211,7 @@ public class BlogDao {
             template.update("update blogpostcomment set commentauthor=?, commentcontent=?,commentpublishdate=? where blogpostcommentid=?",
                     comment.getAuthor(),
                     comment.getContent(),
-                    comment.getPublishDate(),
+                    comment.getPublishDate().toDate(),
                     comment.getBlogPostCommentId());
         }
 

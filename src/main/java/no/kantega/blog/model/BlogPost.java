@@ -2,9 +2,10 @@ package no.kantega.blog.model;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.Locale;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 
 /**
  * Domain object representing a single blog post.
@@ -23,7 +24,7 @@ public class BlogPost {
 
     private String content;
 
-    private Date publishDate;
+    private DateTime publishDate;
     private int commentCount;
 
     /**
@@ -72,12 +73,12 @@ public class BlogPost {
         return blogPostId == 0;
     }
 
-    public Date getPublishDate() {
+    public DateTime getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setPublishDate(Timestamp publishDate) {
+        this.publishDate = new DateTime(publishDate);
     }
 
     /**
@@ -87,7 +88,7 @@ public class BlogPost {
      * @return string representation of published date
      */
     public String getPublishDateInFormat(String format) {
-        return new SimpleDateFormat(format, Locale.US).format(publishDate);
+        return DateTimeFormat.forPattern(format).withLocale(Locale.US).print(publishDate);
     }
 
     public void setCommentCount(int commentCount) {
