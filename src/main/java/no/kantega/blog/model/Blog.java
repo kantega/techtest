@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- *
+ * Domain object for a blog.
+ * 
+ * A blog can have several blog posts.
  */
 public class Blog {
     private long id;
@@ -35,12 +37,22 @@ public class Blog {
         this.color = color;
     }
 
+    /**
+     * Return true if this blog post is new (that is not stored to the database yet).
+     * 
+     * @return true if this blog post it not stored to the database yet
+     */
     public boolean isNew() {
         return id == 0;
     }
 
+    /**
+     * Returns the id used in the link to this blog.
+     * 
+     * @return the id used in the link to this blog
+     */
     public String getLinkId()  {
-        if(name == null) {
+        if (name == null) {
             return null;
         }
         try {
