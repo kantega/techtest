@@ -78,7 +78,6 @@ public class BlogServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         if(isComment(req)) {
-            content = req.getParameter("content");
             postBlogComment(req, resp);
         } else {
             postBlogEntry(req, resp, getBlog(req));
@@ -91,6 +90,9 @@ public class BlogServlet extends HttpServlet {
     }
 
     private void postBlogComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        // TODO: Thread safety: Should this be a local variable?
+        content = req.getParameter("content");
+
         BlogPost post = getBlogPost(req);
         String author = req.getParameter("commentAuthor");
 
@@ -98,6 +100,7 @@ public class BlogServlet extends HttpServlet {
 
         comment.setAuthor(author);
         comment.setContent(content);
+
 
         dao.saveOrUpdate(comment);
 
