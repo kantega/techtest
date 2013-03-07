@@ -9,7 +9,7 @@
     <h2>Resources</h2>
     <ul>
         <li><a href="tools.jsp">Tools</a></li>
-        <li><a href="load_profile.jsp">Load Profile</a></li>
+        <li><a href="loadProfile.jsp">Load Profile</a></li>
         <li><a href="sla.jsp">Service Level Agreement (SLA)</a></li>
         <li><a href="documentation.jsp">Documentation</a></li>
     </ul>
