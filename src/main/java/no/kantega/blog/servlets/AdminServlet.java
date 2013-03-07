@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet for admin page
+ * Servlet for admin page. Lets you see that you are logged in.
  */
 @WebServlet(urlPatterns = "/admin/*")
 public class AdminServlet extends HttpServlet{
@@ -20,11 +20,11 @@ public class AdminServlet extends HttpServlet{
 
         Object admin = session.getAttribute(LoginServlet.ADMIN_SESSION_ATTRIBUTE);
 
-        if(admin != null) {
-            session.getServletContext().getRequestDispatcher("/WEB-INF/jsp/admin.jsp").forward(req, resp);
-        }
-        else {
+        if (admin == null) {
+            // Not logged in
             resp.sendRedirect("/login");
+        } else {
+            session.getServletContext().getRequestDispatcher("/WEB-INF/jsp/admin.jsp").forward(req, resp);
         }
     }
 
