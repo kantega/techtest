@@ -19,7 +19,8 @@ import static no.kantega.blog.services.Services.getService;
 
 
 /**
- *
+ * Code for a single blog. Let you create blog posts and comments, and shows a 
+ * single blog with all its posts. 
  */
 @WebServlet(urlPatterns = "/blog/*")
 public class BlogServlet extends HttpServlet {
@@ -57,10 +58,7 @@ public class BlogServlet extends HttpServlet {
 
     private Blog getBlog(HttpServletRequest req) throws UnsupportedEncodingException {
         String requestURI = req.getRequestURI().substring("/blog/".length());
-
         String blogName = URLDecoder.decode(requestURI, "utf-8");
-
-
         return dao.getBlogByName(blogName);
     }
 
@@ -71,18 +69,15 @@ public class BlogServlet extends HttpServlet {
         String postName = URLDecoder.decode(requestURI.substring(requestURI.indexOf('/')+1), "utf-8");
 
         return dao.getBlogPost(dao.getBlogByName(blogName), postName);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         if(isComment(req)) {
             postBlogComment(req, resp);
         } else {
             postBlogEntry(req, resp, getBlog(req));
         }
-
     }
 
     private boolean isComment(HttpServletRequest req) {
@@ -97,30 +92,20 @@ public class BlogServlet extends HttpServlet {
         String author = req.getParameter("commentAuthor");
 
         BlogPostComment comment = new BlogPostComment(post);
-
         comment.setAuthor(author);
         comment.setContent(content);
-
-
         dao.saveOrUpdate(comment);
 
         resp.sendRedirect(post.getLinkId());
-
-
-
     }
 
     private void postBlogEntry(HttpServletRequest req, HttpServletResponse resp, Blog blog) throws IOException {
         String title = req.getParameter("title");
-        String content = req.getParameter("content");
-
+        String blogContent = req.getParameter("content");
 
         BlogPost post = new BlogPost(blog);
-
         post.setTitle(title);
-
-        post.setContent(content);
-
+        post.setContent(blogContent);
         dao.saveOrUpdate(post);
 
         resp.sendRedirect(blog.getLinkId());
