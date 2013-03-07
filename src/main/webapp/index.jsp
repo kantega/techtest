@@ -37,10 +37,7 @@
     <h3>Interlude</h3>
     <p>We must post data (comments), and check that the data vi posted is the one we are getting. (Kenneth)</p>
 
-    <h3>Task 3: Concurrency</h3>
-    <p>
-        What happens when two or more users try to post comments concurrently?
-    </p>
+    <h3>Task 3: <a href="concurrency.jsp">Concurrency</></h3>
 
     <h3>Task 4: Fault tolerance testing</h3>
     <p>
