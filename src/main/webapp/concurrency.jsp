@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="title" value="Welcome" scope="request"/>
+<c:set var="title" value="Concurrency" scope="request"/>
 
 <c:set var="main" scope="request">
     <h1>Concurrency</h1>

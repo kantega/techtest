@@ -6,15 +6,16 @@
     <h1>Testing workshop</h1>
     <a href="blogs">Blogs</a>
 
+    <h2>Resources</h2>
+    <ul>
+        <li><a href="tools.jsp">Tools</a></li>
+        <li><a href="load_profile.jsp">Load Profile</a></li>
+        <li><a href="sla.jsp">Service Level Agreement (SLA)</a></li>
+        <li><a href="documentation.jsp">Documentation</a></li>
+    </ul>
+    
     <h2>Tasks:</h2>
 
-    <h3>Task 0: Tools</h3>
-    <ul>
-
-        <li><a href="http://jmeter.apache.org">http://jmeter.apache.org</a></li>
-        <li><a href="http://visualvm.java.net">http://visualvm.java.net</a></li>
-
-    </ul>
     <h3>Task 1: Create a blog!</h3>
     <ul>
         <li>Create your own blog</li>
@@ -36,35 +37,18 @@
         Expand the test from the interlude to add posts and comments, according to the
         <a href="loadProfile.jsp">load profile</a>
     </p>
-
+    
     <h3>Interlude</h3>
     <p>We must post data (comments), and check that the data vi posted is the one we are getting. (Kenneth)</p>
 
     <h3>Task 3: <a href="concurrency.jsp">Concurrency</a></h3>
 
-    <h3>Task 4: Fault tolerance testing</h3>
-    <p>
-        Create a JMeter test which demonstrates <a href="https://issues.apache.org/jira/browse/DBCP-28">this issue</a>.
-        The test should run database-dependent code with moderate load while the database is restarted.
-        Keep an eye on the <a href="status">status page</a> to see what happens with the connection pool.
-    </p>
+    <h3>Task 4: <a href="fault_tolerance.jsp">Fault tolerance testing</a></h3>
 
-    <h3>Task 5: Scalability</h3>
-    <p>
-        Database connection pool too small? Locking? Too synchronized?
-        Show status page?
-    </p>
-    <p>Load profile</p>
-        <ul>
-           <li>Users: Synchronize db pool</li>
-           <li>Volume: n+1 select - get blog posts</li>
-        </ul>
+    <h3>Task 5: <a href="scalability.jsp">Scalability</a></h3>
 
-    <h3>Task 6: Stability</h3>
-    <p>
-        Memory leaks with session? Use of Cookie manager.
-        Show JVisual VM.
-    </p>
+    <h3>Task 6: <a href="stability.jsp">Stability</a></h3>
+
 
 </c:set>
 
