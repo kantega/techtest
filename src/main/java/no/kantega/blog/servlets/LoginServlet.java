@@ -9,13 +9,15 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet class for login
+ * Servlet class for login.
  */
 @WebServlet(urlPatterns = {"/login/*", "/logout"})
 public class LoginServlet extends HttpServlet {
 
     public static final String ADMIN_SESSION_ATTRIBUTE = "admin";
-
+    public static final String CORRECT_USERNAME = "admin";
+    public static final String CORRECT_PASSWORD = "admin";
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(true);
@@ -37,8 +39,8 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        if(username.equals("admin") && password.equals("admin")) {
-            session.setAttribute(ADMIN_SESSION_ATTRIBUTE, "admin");
+        if(username.equals(CORRECT_USERNAME) && password.equals(CORRECT_PASSWORD)) {
+            session.setAttribute(ADMIN_SESSION_ATTRIBUTE, username);
             resp.sendRedirect("/blogs");
         }
         else {
