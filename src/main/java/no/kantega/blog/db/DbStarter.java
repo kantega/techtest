@@ -9,6 +9,7 @@ import java.net.InetAddress;
 /**
  * Class that gives a simple way to start and stop the database.
  */
+@SuppressWarnings("PMD.SystemPrintln")
 public final class DbStarter {
 
     private static final int PORT_NUMBER = 1527;

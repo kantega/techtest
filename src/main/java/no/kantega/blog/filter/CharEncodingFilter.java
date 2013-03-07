@@ -17,6 +17,7 @@ public class CharEncodingFilter implements Filter {
      */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        // empty
     }
 
     /**
@@ -34,5 +35,6 @@ public class CharEncodingFilter implements Filter {
      */
     @Override
     public void destroy() {
+        // empty
     }
 }
