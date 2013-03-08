@@ -28,9 +28,9 @@
                     <td>Color:</td>
                     <td>
                         <select name="color">
-                            <option value="#ffc0cb">#ffc0cb</option>
-                            <option value="#87ceeb">#87ceeb</option>
-                            <option value="#ffffe0">#ffffe0</option>
+                            <option>#ffc0cb</option>
+                            <option>#add8e6</option>
+                            <option>#ffffe0</option>
                         </select>
                     </td>
                 </tr>
