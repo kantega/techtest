@@ -15,7 +15,7 @@
         <![endif]-->
 
     <style type="text/css">
-        body {
+        .articleLayout {
             <c:if test="${not empty backgroundColor}">
                 background-color: ${backgroundColor};
             </c:if>
@@ -28,40 +28,6 @@
 
 <body>
 <div id="page-container">
-
-<div class="accessibility-skip-links" style="display: none">
-    <ol>
-        <li>
-            <a href="#mainMenu">Hopp til hovedmeny</a>
-        </li>
-        <li>
-            <a href="#sideinnhold-start">Hopp til sideinnhold</a>
-        </li>
-        <li>
-            <a href="#global-search-input">Hopp til søk</a>
-        </li>
-    </ol>
-</div>
-
-
-
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-17108442-1']);
-        _gaq.push(['_trackPageview']);
-        _gaq.push(['_setDomainName', 'kantega.no']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-
-
-
-
-
 
 
 
@@ -109,7 +75,7 @@
 
 	<li>
 
-            <a title="Om Kantega" href="http://kantega.no/jobb/">About Kantega</a>
+            <a title="Om Kantega" target="_blank" href="http://kantega.no/jobb/">About Kantega</a>
 
 	</ul>
 

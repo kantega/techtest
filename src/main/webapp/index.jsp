@@ -3,9 +3,14 @@
 <c:set var="title" value="Welcome" scope="request"/>
 
 <c:set var="main" scope="request">
-    <h1>Testing workshop</h1>
-    <a href="blogs">Blogs</a>
+    <h1>Workshop: Introduction to Technical Testing</h1>
 
+    <p class="ingress">
+        In this workshop, we give you a seemingly functional <a href="blog">blog application</a>. By running, writing and testing with automated
+        load tests you'll discover that the system is buggy, unstable and just doesn't scale! Well'll then show you
+        tools and techniques which will help you in identifying common classes of bugs, how to resolve them and how
+        to verify that the situation actually improved
+    </p>
     <h2>Resources</h2>
     <ul>
         <li><a href="tools.jsp">Tools</a></li>

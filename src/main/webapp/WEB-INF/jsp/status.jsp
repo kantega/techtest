@@ -71,10 +71,30 @@
 </table>
 
     <h2>Sessions</h2>
-    <p>Current active sessions: ${activeSessionCount}</p>
-    <p>Total sessions created: ${totalSessionCount}</p>
+    <table>
+        <tr>
+
+            <td>
+                Current active sessions:
+            </td>
+            <td>
+                    ${activeSessionCount}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total sessions created:
+            </td>
+            <td>
+                ${totalSessionCount}
+            </td>
+        </tr>
+    </table>
+
     <form action="status" method="POST">
+        <p>
         <input type="submit" name="invalidateSessions" value="Invalidate sessions" >
+        </p>
     </form>
 </c:set>
 
