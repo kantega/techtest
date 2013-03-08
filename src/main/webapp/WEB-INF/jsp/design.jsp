@@ -41,85 +41,53 @@
 
                 <section class="hidden-phone">
 
-
-
-
-
-
-
 <nav id="desktop-navigation" class="always-fullwidth">
 
 
     <div class="span8" id="mainMenu">
         <ul>
-	<li>
-
-            <a title="Workshop" href="/">Workshop</a>
-
-        </li>
-	<li>
-
-            <a title="Blogs" href="/blogs">Blogs</a>
-
-        </li>
             <li>
-
+                <a title="Workshop" href="/">Workshop</a>
+            </li>
+            <li>
+                <a title="Blogs" href="/blogs">Blogs</a>
+            </li>
+            <li>
                 <a title="Status" href="/status">Status</a>
-
             </li>
             <li>
-
                 <a title="Admin" href="/admin">Admin</a>
-
             </li>
-
-	<li>
-
-            <a title="Om Kantega" target="_blank" href="http://kantega.no/jobb/">About Kantega</a>
-
-	</ul>
-
+<% if (session.getAttribute("admin") != null) { %>
+            <li>
+                <a title="Logout" href="/logout">Logout</a>
+            </li>
+<% } %>
+            <li>
+                <a title="Om Kantega" target="_blank" href="http://kantega.no/jobb/">About Kantega</a>
+            </li>
+        </ul>
     </div>
 </nav>
                 </section>
-
             </div>
         </div>
-
     </div>
-
-
-
-</div>
-
-
+</div> <!-- Topsection -->
 
 <div id="mainsection">
-
     <div class="container">
         <div class="articleLayout">
-
             <div class="content">
             ${main}
             </div>
-
+        </div>
     </div>
 
+    <div class="footerspacer">&nbsp;</div>
 </div>
 
-
-
-
-
-
-
-<div class="footerspacer">&nbsp;</div>
-
-
-    </div>
-
-
-    </div>
+</div> <!-- Page container -->
 
 
 
