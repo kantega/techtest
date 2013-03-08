@@ -2,6 +2,7 @@ package no.kantega.blog.initializer;
 
 import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.filter.CharEncodingFilter;
+import no.kantega.blog.filter.ErrorFilter;
 import no.kantega.blog.listener.BlogSessionListener;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.derby.jdbc.ClientDriver40;
@@ -45,6 +46,14 @@ public class BlogInitializer implements ServletContainerInitializer {
         addService(DataSource.class, initializeDatasource(), servletContext);
         addService(BlogDao.class, new BlogDao(getService(DataSource.class, servletContext)), servletContext);
         configureCharEncFilter(servletContext);
+
+        configureErrorFilter(servletContext);
+    }
+
+    private void configureErrorFilter(ServletContext servletContext) {
+        EnumSet<DispatcherType> enums = EnumSet.of(DispatcherType.REQUEST);
+        servletContext.addFilter("errorFilter", ErrorFilter.class).addMappingForUrlPatterns(enums, false, "/*");
+
     }
 
     private void configureSessionListener(ServletContext servletContext) throws ServletException {
@@ -90,7 +99,8 @@ public class BlogInitializer implements ServletContainerInitializer {
 
                     "create table blogpost (blogpostid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                             " blogid integer NOT NULL,  " +
-                            " posttitle varchar(255) NOT NULL UNIQUE, " +
+                            " posttitle varchar(255) NOT NULL, " +
+                            " blogandposttitle varchar(255) NOT NULL UNIQUE, " +
                             " postcontent clob (500K) NOT NULL, " +
                             " publishdate timestamp NOT NULL " +
                             " )",

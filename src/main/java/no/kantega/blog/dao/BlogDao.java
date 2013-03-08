@@ -108,9 +108,10 @@ public class BlogDao {
      */
     public void saveOrUpdate(BlogPost post) {
         if (post.isNew()) {
-            template.update("INSERT INTO blogpost (blogid, posttitle, postcontent, publishdate) VALUES (?, ?, ?, ?)",
+            template.update("INSERT INTO blogpost (blogid, posttitle, blogandposttitle, postcontent, publishdate) VALUES (?, ?, ?, ?, ?)",
                     post.getBlog().getId(),
                     post.getTitle(),
+                    post.getBlog().getName() + "_" +post.getTitle(),
                     post.getContent(),
                     new Timestamp(System.currentTimeMillis()));
         } else {

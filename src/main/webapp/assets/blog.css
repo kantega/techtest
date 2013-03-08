@@ -59,7 +59,7 @@ td {
     vertical-align: top;
 }
 
-.email {
+.email, .stacktrace {
     font-family: monospace;
     border: 1px solid #00008b;
     padding: 1em;
@@ -80,4 +80,13 @@ td {
 
 textarea {
     padding:1em;
+}
+
+.failwhale {
+    border: 3px solid #000000;;
+    padding: 1em;
+}
+.stacktrace {
+    background-color: #f08080;
+    overflow: auto;
 }
