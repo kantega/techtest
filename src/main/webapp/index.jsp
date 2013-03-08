@@ -13,7 +13,7 @@
     </p>
     <h2>Tasks:</h2>
 
-    <h3>Task 1: <a href="/create_a_blog.jsp">Create your own blog</a></h3>
+    <h3>Task 1: <a href="create_a_blog.jsp">Create your own blog</a></h3>
     <h3>Task 2: <a href="create_a_test.jsp">Create your own test</a></h3>
     <h3>Task 3: <a href="concurrency.jsp">Concurrency</a></h3>
     <h3>Task 4: <a href="fault_tolerance.jsp">Fault tolerance</a></h3>

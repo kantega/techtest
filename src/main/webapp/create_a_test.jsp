@@ -5,7 +5,7 @@
 <c:set var="main" scope="request">
     <h1>Create a test</h1>
 
-    <p>We are going to create a simple JMeter test using the following elements:</p>
+    <p class="ingress">We are going to create a simple JMeter test using the following elements:</p>
     
     <ul>
         <li>Structure

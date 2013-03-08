@@ -6,9 +6,8 @@
 <c:set var="main" scope="request">
     <h1>Volume</h1>
     
-    <h2>Introduction</h2>
-    
-    <p>Some of out bloggers are on stereoids. We think it is because of the 
+
+    <p class="ingress">Some of out bloggers are on stereoids. We think it is because of the
        new feature to automatically get instagrams and tweets up as blog
        posts. Øysteins "what I ate for dinner taken with a crappy camera"-blog
        is one of the blogs that get most frequently updated with new posts.</p>

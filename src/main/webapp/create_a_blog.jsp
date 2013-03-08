@@ -5,7 +5,7 @@
 <c:set var="main" scope="request">
     <h1>Create a blog</h1>
 
-    <p>To get to know the product you are testing we would like you to explore it a little.</p>
+    <p class="ingress">To get to know the product you are testing we would like you to explore it a little.</p>
     
     <ul>
         <li>Create your own blog</li>
@@ -13,7 +13,7 @@
         <li>Comment on it!</li>
         <li>Log in as administrator</li>
         <li>Delete a blog</li>
-        <li>Check out the status page<li/>
+        <li>Check out the status page</li>
     </ul>
 
     <a href="/">Back...</a>
