@@ -46,7 +46,7 @@
 
         Blog: <a href="/blog/${post.blog.linkId}">${post.blog.name}</a>
 
-        <h2>${post.title} ${post.blogPostId}</h2>
+        <h2>${post.title}</h2>
 
         <p class="publishDate">Published ${post.getPublishDateInFormat('yyyy-MM-dd HH:mm')}</p>
         <script type="text/html" class="content"><c:out value="${post.content}"/></script>
@@ -65,11 +65,14 @@
         <div class="commentForm" id="commentFor_${post.blogPostId}">
             <form action="${blog.linkId}" method="post">
                 <input type="hidden" name="blogPostId" value="${post.blogPostId}">
-                <label for="commentAuthor">Who are you</label>: <input id="commentAuthor" name="commentAuthor" type="text" size="80" value="John Doe">
-                <br>
+                <p>
+                    <label for="commentAuthor">Who are you</label>: <input id="commentAuthor" name="commentAuthor" type="text" size="80" value="John Doe">
+                </p>
+
                 <textarea name="content" cols="80" rows="10">I really like...</textarea>
-                <br>
+                <p>
                 <input type="submit" value="Add comment">
+                </p>
             </form>
         </div>
 
