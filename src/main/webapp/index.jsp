@@ -22,19 +22,12 @@
     <h2>Tasks:</h2>
 
     <h3>Task 1: <a href="/create_a_blog.jsp">Create your own blog</a></h3>
-
-    <h3>Interlude</h3>
-    <p>We must post data (comments), and check that the data vi posted is the one we are getting. (Kenneth)</p>
-
-    <h3>Task 2: <a href="concurrency.jsp">Concurrency</a></h3>
-
-    <h3>Task 3: <a href="fault_tolerance.jsp">Fault tolerance testing</a></h3>
-
-    <h3>Task 4: <a href="volume.jsp">Volume</a></h3>
-
-    <h3>Task 5: <a href="scalability.jsp">Scalability</a></h3>
-
-    <h3>Task 6: <a href="stability.jsp">Stability</a></h3>
+    <h3>Task 2: <a href="create_a_test.jsp">Create your own test</a></h3>
+    <h3>Task 3: <a href="concurrency.jsp">Concurrency</a></h3>
+    <h3>Task 4: <a href="fault_tolerance.jsp">Fault tolerance</a></h3>
+    <h3>Task 5: <a href="volume.jsp">Volume</a></h3>
+    <h3>Task 6: <a href="scalability.jsp">Scalability</a></h3>
+    <h3>Task 7: <a href="stability.jsp">Stability</a></h3>
 
 </c:set>
 
