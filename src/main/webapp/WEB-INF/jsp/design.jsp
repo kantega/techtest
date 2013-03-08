@@ -5,7 +5,7 @@
 <head>
     <title>Kantega testing workshop - ${title}</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/blog.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/internett.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/internett.css" media="screen"/>
         <!--[if (lt IE 9)&(!IEMobile)]>
             <link media="screen" rel="stylesheet" href="/assets/css/bootstrap.css"/>
             <link media="screen" rel="stylesheet" href="/assets/css/editor.css"/>"/>
@@ -25,12 +25,7 @@
 </head>
 
 <body>
-
-<body>
 <div id="page-container">
-
-
-
 
 <div id="topsection" class="always-fullwidth">
 <!--      -->
@@ -39,7 +34,7 @@
             <div class="row">
                 <div class="span2">
                     <a href="/" class="logoLink noLinkEffect" title="Til forsiden">
-                        <img src="/assets/bitmaps/kantega_logo.png">
+                        <img src="/assets/bitmaps/kantega_logo.png" alt="Kantega Logo">
                     </a>
                     <a href="#mobile-navigation" class="mobile-menu-anchor"></a>
                 </div>
