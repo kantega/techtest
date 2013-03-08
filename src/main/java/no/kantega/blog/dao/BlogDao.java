@@ -147,7 +147,7 @@ public class BlogDao {
      */
     private List<BlogPost> getBlogPostsEfficient(String whereClaus, Object[] parameters) {
         String sql = "select blog.blogid, blog.blogname, blog.color, blogpost.blogpostid, blogpost.posttitle, blogpost.postcontent, blogpost.publishdate, " +
-                " (select count(*) from blogpostcomment where blogpostcomment.blogpostcommentid=blogpost.blogpostid) as commentcount " +
+                " (select count(*) from blogpostcomment where blogpostcomment.blogpostid=blogpost.blogpostid) as commentcount " +
                 " from blogpost left join blog on blog.blogid=blogpost.blogid " + whereClaus + " order by  blogpost.blogpostid desc";
 
         return template.query(sql, new RowMapper<BlogPost>() {
@@ -170,7 +170,7 @@ public class BlogDao {
      */
     private List<BlogPost> getBlogPostsInefficient(String whereClaus, Object[] parameters) {
         String sql = "select blogpost.blogid, blogpost.blogpostid, blogpost.posttitle, blogpost.postcontent, blogpost.publishdate, " +
-                " (select count(*) from blogpostcomment where blogpostcomment.blogpostcommentid=blogpost.blogpostid) as commentcount " +
+                " (select count(*) from blogpostcomment where blogpostcomment.blogpostid=blogpost.blogpostid) as commentcount " +
                 " from blogpost " + whereClaus + " order by  blogpost.blogpostid desc";
 
         return template.query(sql, new RowMapper<BlogPost>() {

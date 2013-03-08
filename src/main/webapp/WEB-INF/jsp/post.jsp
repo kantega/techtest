@@ -46,7 +46,7 @@
 
         Blog: <a href="/blog/${post.blog.linkId}">${post.blog.name}</a>
 
-        <h2>${post.title} ${post.blogPostId}</h2>
+        <h2>${post.title}</h2>
 
         <p class="publishDate">Published ${post.getPublishDateInFormat('yyyy-MM-dd HH:mm')}</p>
         <script type="text/html" class="content"><c:out value="${post.content}"/></script>
