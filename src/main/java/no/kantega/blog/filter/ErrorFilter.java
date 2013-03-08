@@ -25,7 +25,7 @@ public class ErrorFilter implements Filter {
             StringWriter sw = new StringWriter();
             e.printStackTrace(new PrintWriter(sw));
             req.setAttribute("stackTrace", sw.toString());
-            req.getRequestDispatcher("/WEB-INF/jsp/404.jsp").forward(servletRequest, servletResponse);
+            req.getRequestDispatcher("/WEB-INF/jsp/500.jsp").forward(servletRequest, servletResponse);
         }
 
 
