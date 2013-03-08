@@ -19,7 +19,7 @@
     <h2>Part II</h2>
 
     <p>
-        Chose one of the following tasks. Or do them all if you have time.
+        Choose one of the following tasks. Or do them all if you have time!
     </p>
     <h3>Task 3: <a href="concurrency.jsp">Concurrency</a></h3>
     <h3>Task 4: <a href="fault_tolerance.jsp">Fault tolerance</a></h3>
