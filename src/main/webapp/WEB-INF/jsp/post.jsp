@@ -65,11 +65,14 @@
         <div class="commentForm" id="commentFor_${post.blogPostId}">
             <form action="${blog.linkId}" method="post">
                 <input type="hidden" name="blogPostId" value="${post.blogPostId}">
-                <label for="commentAuthor">Who are you</label>: <input id="commentAuthor" name="commentAuthor" type="text" size="80" value="John Doe">
-                <br>
+                <p>
+                    <label for="commentAuthor">Who are you</label>: <input id="commentAuthor" name="commentAuthor" type="text" size="80" value="John Doe">
+                </p>
+
                 <textarea name="content" cols="80" rows="10">I really like...</textarea>
-                <br>
+                <p>
                 <input type="submit" value="Add comment">
+                </p>
             </form>
         </div>
 
