@@ -1,3 +1,4 @@
+<%@page pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="title" value="Scalability" scope="request"/>
@@ -9,7 +10,7 @@
     
     <p>Some of out bloggers are on stereoids. We think it is because of the 
        new feature to automatically get instagrams and tweets up as blog
-       posts. Øysteins "what I ate for dinner taken with a crappy camera"-blog
+       posts. Ã˜ysteins "what I ate for dinner taken with a crappy camera"-blog
        is one of the blogs that get most frequently updated with new posts.</p>
         
     <div class="email">
@@ -23,7 +24,7 @@
         <div class="mailbody">
             <p>Hi,</p> 
 
-            <p>OMG! Øysteins "what I ate for dinner taken with a crappy camera"-blog is so cool!.</p>
+            <p>OMG! Ã˜ysteins "what I ate for dinner taken with a crappy camera"-blog is so cool!.</p>
 
             <p>Alas, lately it has also become so slow :( :( :'-(</p> 
             
