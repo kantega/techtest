@@ -146,43 +146,14 @@
 
 
 
+
 <div class="footerspacer">&nbsp;</div>
-</div>
-
-<section class="visible-phone">
 
 
-
-
-
-
-
-
-<div id="footer" class="always-fullwidth">
-    <div class="container">
-        <div class="row">
-            <div class="span3 hidden-phone">
-                <img class="spaa" src="/bitmaps/internett/spa.png" alt="Kantega - Nesten litt magisk" title="Kantega - Nesten litt magisk">
-            </div>
-            <div class="span6 om-kantega">
-                <h3>
-                    Hvem er vi?
-                </h3>
-                <p>
-                    Kantega er et norsk IT-konsulentselskap med spisskompetanse innen rådgivning, design, systemutvikling, test, integrasjon og forvaltning. Vi leverer nyskapende selvbetjenings- og saksbehandlingsløsninger. Unike løsninger med høy kvalitet og lave livsløpskostnader.
-                </p>
-            </div>
-            <div class="span3">
-                <div class="social">
-                    <h3 class="">Følg oss</h3>
-
-                </div>
-            </div>
-        </div>
     </div>
-</div>
 
 
+    </div>
 
 
 
@@ -201,14 +172,6 @@
         s.parentNode.insertBefore(wf, s);
     })();
 </script>
-
-<div class="status">
-<a href="<%=request.getContextPath()%>/status">Status</a>
-<a href="<%=request.getContextPath()%>/admin">Admin</a>
-<c:if test="${sessionScope.admin != null}">
-    <a href="<%=request.getContextPath()%>/logout">Log out</a>
-</c:if>
-</div>
 
 </body>
 </html>
