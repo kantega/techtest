@@ -69,7 +69,12 @@
         </li>
             <li>
 
-                <a title="Statys" href="/status">Status</a>
+                <a title="Status" href="/status">Status</a>
+
+            </li>
+            <li>
+
+                <a title="Admin" href="/admin">Admin</a>
 
             </li>
 
