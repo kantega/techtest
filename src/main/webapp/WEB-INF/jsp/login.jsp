@@ -19,9 +19,7 @@
                             <label for="password">Password</label><br/>
                             <input class="text" type="password" id="password" name="password"/>
                         </p>
-                        <button type="submit" id="formSubmitButton" class="button positive">
-                            <img src="/css/blueprint/plugins/buttons/icons/tick.png" alt=""/>Log in
-                        </button>
+                        <input type="submit" id="formSubmitButton" value="Login">
                     </fieldset>
                 </form>
             </td>
