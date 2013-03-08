@@ -47,7 +47,7 @@
     <p class="tip">Pressing enter in the "mvn exec:java" shell stops the database.</p>
     
     <p class="tip">
-        Create a JMeter test which demonstrates <a href="https://issues.apache.org/jira/browse/DBCP-28">this issue</a>.
+        Create a JMeter test which demonstrates <a href="https://issues.apache.org/jira/browse/DBCP-28" target="_blank">this issue</a>.
         The test should run database-dependent code with moderate load while the database is restarted.
         Keep an eye on the <a href="status">status page</a> to see what happens with the connection pool.
     </p>
