@@ -5,9 +5,9 @@
 
 <c:set var="main" scope="request">
 
-    <h1>Who's who?</h1>
+    <h1>Most visited blogs</h1>
 
-    <p>Who has the most popular blog?</p>
+    <p class="ingress">Who has the most popular blog..?</p>
     <table>
         <tr>
             <th>Blog</th>
