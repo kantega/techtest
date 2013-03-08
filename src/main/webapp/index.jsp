@@ -11,14 +11,6 @@
         tools and techniques which will help you in identifying common classes of bugs, how to resolve them and how
         to verify that the situation actually improved
     </p>
-    <h2>Resources</h2>
-    <ul>
-        <li><a href="tools.jsp">Tools</a></li>
-        <li><a href="loadProfile.jsp">Load Profile</a></li>
-        <li><a href="sla.jsp">Service Level Agreement (SLA)</a></li>
-        <li><a href="documentation.jsp">Documentation</a></li>
-    </ul>
-    
     <h2>Tasks:</h2>
 
     <h3>Task 1: <a href="/create_a_blog.jsp">Create your own blog</a></h3>
@@ -28,6 +20,15 @@
     <h3>Task 5: <a href="volume.jsp">Volume</a></h3>
     <h3>Task 6: <a href="scalability.jsp">Scalability</a></h3>
     <h3>Task 7: <a href="stability.jsp">Stability</a></h3>
+
+    <h2>Resources</h2>
+    <ul>
+        <li><a href="tools.jsp">Tools</a></li>
+        <li><a href="loadProfile.jsp">Load Profile</a></li>
+        <li><a href="sla.jsp">Service Level Agreement (SLA)</a></li>
+        <li><a href="documentation.jsp">Documentation</a></li>
+    </ul>
+
 
 </c:set>
 
