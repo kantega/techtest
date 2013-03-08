@@ -14,7 +14,7 @@
             <table summary="data entry for creating new blog">
                 <tr>
                     <td>
-                        Name:
+                        Blog name:
                     </td>
                     <td>
                         <input type="text" name="blogname">
@@ -24,7 +24,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Color:</td>
+                    <td>Background color:</td>
                     <td>
                         <select name="color">
                             <option>#ffc0cb</option>
@@ -35,7 +35,9 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Create"></td>
+                    <td>
+                        <p><input type="submit" value="Create blog"></p>
+                    </td>
                 </tr>
             </table>
 
