@@ -38,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="span2">
-                    <a href="/internett/" class="logoLink noLinkEffect" title="Til forsiden">
+                    <a href="/" class="logoLink noLinkEffect" title="Til forsiden">
                         <img src="/assets/bitmaps/kantega_logo.png">
                     </a>
                     <a href="#mobile-navigation" class="mobile-menu-anchor"></a>
