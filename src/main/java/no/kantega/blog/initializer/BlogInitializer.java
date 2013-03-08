@@ -90,7 +90,7 @@ public class BlogInitializer implements ServletContainerInitializer {
 
                     "create table blogpost (blogpostid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                             " blogid integer NOT NULL,  " +
-                            " posttitle varchar(255) NOT NULL, " +
+                            " posttitle varchar(255) NOT NULL UNIQUE, " +
                             " postcontent clob (500K) NOT NULL, " +
                             " publishdate timestamp NOT NULL " +
                             " )",

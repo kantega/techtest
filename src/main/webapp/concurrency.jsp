@@ -5,13 +5,13 @@
 <c:set var="main" scope="request">
     <h1>Concurrency</h1>
     
-    <h2>Introduction</h2>
+
+    <p class="ingress">Lately we have been seeing an increasing amount of emails like the one below, especially during lunch hour.
+        We think this might happen more often now that we have gotten increased usage with new and popular blogs.</p>
     
-    <p>Lately we have been seeing an increasing amount of emails like the one below, especially during lunch hour.</p>
+
     
-    <p>We think this might happen more often now that we have gotten increased usage with new and popular blogs.</p>
-    
-    <tt class="email">
+    <div class="email">
         <div class="mailheader">
             <p><b>From:</b> Fashin Freak &lt;fashion.freak@gmail.com&gt;</p>
             <p><b>To:</b> Web Admin &lt;admin@eiriksgfashionblog.com&gt;</p>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="mailbody">
-            <p>Hi,</p> 
+            <p>Hi,</p>
 
             <p>I was trying to comment on Eiriks blog post about his new dress, but when I posted
                 suddenly some other comment came in place of mine.</p>
@@ -36,7 +36,7 @@
             <p>Regards,<br/> 
             Fashonista</p>
           </div>
-    </tt>
+    </div>
     
     <h2>Task</h2>
     

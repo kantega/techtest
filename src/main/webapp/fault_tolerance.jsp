@@ -5,11 +5,10 @@
 <c:set var="main" scope="request">
     <h1>Fault Tolerance</h1>
     
-    <h2>Introduction</h2>
-    
-    <p>When we put the blog in production, and started taking backup of the database, we found a problem.</p>
+
+    <p class="ingress">When we put the blog in production, and started taking backup of the database, we found a problem.</p>
         
-    <tt class="email">
+    <div class="email">
         <div class="mailheader">
             <p><b>From:</b> BOFH &lt;it_ops@blogprovider.com&gt;</p>
             <p><b>To:</b> Blog Software Development Team &lt;blogs@development.com&gt;</p>
@@ -32,7 +31,7 @@
             <p>Regards,<br/> 
             BOFH</p>
           </div>
-    </tt>
+    </div>
     
     <h2>Task</h2>
     

@@ -5,13 +5,11 @@
 <c:set var="main" scope="request">
     <h1>Stability</h1>
     
-    <h2>Introduction</h2>
-    
-    <p>After it has been running for a while the blog server start getting hickup.
+    <p class="ingress">After it has been running for a while the blog server start getting hickup.
         Suddenly it has 10 second periods where it stops responding to page views.
         After even longer time is crashes with out of memory exception.</p>
         
-    <tt class="email">
+    <div class="email">
         <div class="mailheader">
             <p><b>From:</b> BOFH &lt;it_ops@blogprovider.com&gt;</p>
             <p><b>To:</b> Blog Software Development Team &lt;blogs@development.com&gt;</p>
@@ -89,7 +87,7 @@ java.lang.OutOfMemoryError: Java heap space
             <p>Regards,<br/> 
             BOFH</p>
           </div>
-    </tt>
+    </div>
     
     <h2>Task</h2>
     

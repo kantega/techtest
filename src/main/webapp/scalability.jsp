@@ -5,11 +5,10 @@
 <c:set var="main" scope="request">
     <h1>Scalability</h1>
     
-    <h2>Introduction</h2>
-    
-    <p>Jørgens new blogpost hit slashdot, but we are just hanging.</p>
+
+    <p class="ingress">Jørgen's new blogpost hit Slashdot, but we are just hanging.</p>
         
-    <tt class="email">
+    <div class="email">
         <div class="mailheader">
             <p><b>From:</b> A Reader &lt;anonymous@gmail.com&gt;</p>
             <p><b>To:</b> Web Admin &lt;admin@eiriksgfashionblog.com&gt;</p>
@@ -29,7 +28,7 @@
             <p>Regards,<br/> 
             Anonymous Reader</p>
           </div>
-    </tt>
+    </div>
     
     <h2>Task</h2>
     

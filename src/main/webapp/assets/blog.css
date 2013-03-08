@@ -58,3 +58,22 @@ td.numeric {
 td {
     vertical-align: top;
 }
+
+.email {
+    font-family: monospace;
+    border: 1px solid #00008b;
+    padding: 1em;
+    box-shadow: 0 1px 3px rgba(39, 89, 114, 0.8);
+    -ms-transform:rotate(-0.2deg); /* IE 9 */
+    -moz-transform:rotate(-0.2deg); /* Firefox */
+    -webkit-transform:rotate(-0.2deg); /* Safari and Chrome */
+    -o-transform:rotate(-0.2deg); /* Opera */
+    transform:rotate(-0.2deg);
+    overflow: hidden;
+
+}
+
+.mailheader p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
