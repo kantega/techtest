@@ -3,7 +3,6 @@
 <c:set var="title" value="Blogs" scope="request"/>
 <c:set var="main" scope="request">
 
-
     <h1>SuperBlog</h1>
     <p class="ingress">
         Welcome to Superblog!
@@ -42,9 +41,6 @@
 
             <br>
 
-
-
-
         </fieldset>
     </form>
 
@@ -55,14 +51,15 @@
         <li>
             <a href="blog/${blog.linkId}">${blog.name}</a>
             <c:if test="${sessionScope.admin != null}">
-                <a href="/blogs?delete=${blog.name}">Delete</a>
+                <form action="/blogs" method="post" style="display:inline">
+                    <a href="javascript:;" onclick="javascript:parentNode.submit();">Delete</a>
+                    <input type="hidden" name="delete" value="${blog.linkId}"/>
+                </form>
             </c:if>
         </li>
     </c:forEach>
 
 </ul>
 </c:set>
-
-
 
 <jsp:include page="design.jsp"/>

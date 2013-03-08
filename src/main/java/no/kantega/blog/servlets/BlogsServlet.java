@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import static no.kantega.blog.services.Services.getService;
 
@@ -34,35 +35,28 @@ public class BlogsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(true);
 
-        String blogToDelete = req.getParameter("delete");
-
-        if (blogToDelete == null) {
-            // Show all blogs
-            req.setAttribute("blogs", dao.getAllBlogs());
-            req.getRequestDispatcher("/WEB-INF/jsp/blogs.jsp").forward(req, resp);
-        } else {
-            // Delete a single blog
-            Object admin = session.getAttribute(LoginServlet.ADMIN_SESSION_ATTRIBUTE);
-            if (admin == null) {
-                // Not logged in
-                req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
-            } else {
-                dao.deleteBlogByName(blogToDelete);
-                resp.sendRedirect("/blogs");
-            }
-        }
+        req.setAttribute("blogs", dao.getAllBlogs());
+        req.getRequestDispatcher("/WEB-INF/jsp/blogs.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (shouldDelete(request)) {
+            deletePost(request, response);
+        } else {
+            newBlogPost(request, response);
+        }
+    }
+
+    private void newBlogPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String color = request.getParameter("color");
         String name = request.getParameter("blogname");
+
         if(name == null || name.trim().isEmpty()) {
             request.setAttribute("nameIsMissing", Boolean.TRUE);
             doGet(request, response);
             return;
         }
-
-        String color = request.getParameter("color");
 
         Blog blog = new Blog();
         blog.setName(name);
@@ -70,5 +64,25 @@ public class BlogsServlet extends HttpServlet {
         dao.saveOrUpdate(blog);
 
         response.sendRedirect("blogs");
+    }
+    
+    private void deletePost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String blogToDelete = URLDecoder.decode(request.getParameter("delete"), "utf-8");
+        if (blogToDelete != null) {
+            // Delete a single blog
+            HttpSession session = request.getSession(true);
+            Object admin = session.getAttribute(LoginServlet.ADMIN_SESSION_ATTRIBUTE);
+            if (admin == null) {
+                // Not logged in
+                request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            } else {
+                dao.deleteBlogByName(blogToDelete);
+                response.sendRedirect("/blogs");
+            }
+        }
+    }
+
+    private boolean shouldDelete(HttpServletRequest request) {
+        return request.getParameter("delete") != null;
     }
 }
