@@ -100,10 +100,10 @@ public class BlogInitializer implements ServletContainerInitializer {
                     "create table blogpost (blogpostid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                             " blogid integer NOT NULL,  " +
                             " posttitle varchar(255) NOT NULL, " +
-                            " blogandposttitle varchar(255) NOT NULL UNIQUE, " +
+                            " blogandposttitle varchar(255) NOT NULL, " +
                             " postcontent clob (500K) NOT NULL, " +
-                            " publishdate timestamp NOT NULL " +
-                            " )",
+                            " publishdate timestamp NOT NULL, " +
+                            " CONSTRAINT unique_post_title_in_blog UNIQUE (blogid, posttitle))",
                     "create table blogpostcomment (blogpostcommentid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                                                 " blogpostid integer NOT NULL,  " +
                                                 " commentauthor varchar(255) NOT NULL, " +
