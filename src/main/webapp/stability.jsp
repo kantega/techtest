@@ -29,60 +29,31 @@
             
             <p>Take a look at the attached stacktrace...</p>
 
-            <pre>Exception in thread "ContainerBackgroundProcessor[StandardEngine[Catalina]]" java.lang.OutOfMemoryError: Java heap space
-        at java.util.Arrays.copyOfRange(Arrays.java:3210)
-        at java.lang.String.<init>(String.java:216)
-        at java.lang.StringBuffer.toString(StringBuffer.java:585)
-        at org.netbeans.lib.profiler.server.ProfilerRuntimeMemory.traceVMObjectAlloc(ProfilerRuntimeMemory.java:170)
-        at java.lang.Throwable.getStackTraceElement(Native Method)
-        at java.lang.Throwable.getOurStackTrace(Throwable.java:590)
-        at java.lang.Throwable.getStackTrace(Throwable.java:582)
-        at org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:155)
-        at org.apache.juli.logging.DirectJDKLog.error(DirectJDKLog.java:135)
-        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1603)
-        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1610)
-        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1590)
-        at java.lang.Thread.run(Thread.java:619)
-Exception in thread "*** JFluid Monitor thread ***" java.lang.OutOfMemoryError: Java heap space
-        at java.util.Arrays.copyOf(Arrays.java:2760)
-        at java.util.Arrays.copyOf(Arrays.java:2734)
-        at java.util.Vector.ensureCapacityHelper(Vector.java:226)
-        at java.util.Vector.add(Vector.java:728)
-        at org.netbeans.lib.profiler.server.Monitors$SurvGenAndThreadsMonitor.updateSurvGenData(Monitors.java:230)
-        at org.netbeans.lib.profiler.server.Monitors$SurvGenAndThreadsMonitor.run(Monitors.java:169)
-Nov 30, 2009 2:22:05 PM org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor processChildren
-SEVERE: Exception invoking periodic operation:
-java.lang.OutOfMemoryError: Java heap space
-        at java.lang.StringCoding$StringEncoder.encode(StringCoding.java:232)
-        at java.lang.StringCoding.encode(StringCoding.java:272)
-        at java.lang.String.getBytes(String.java:946)
-        at java.io.UnixFileSystem.getLastModifiedTime(Native Method)
-        at java.io.File.lastModified(File.java:826)
-        at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1175)
-        at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1269)
-        at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:296)
-        at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:118)
-        at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1337)
-        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1601)
-        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1610)
-        at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1590)
-        at java.lang.Thread.run(Thread.java:619)
-ERROR [JobRunShell]: Job updateVendorData.quoteUpdate threw an unhandled Exception:
-java.lang.OutOfMemoryError: Java heap space
-        at java.util.Arrays.copyOfRange(Arrays.java:3210)
-        at java.lang.String.<init>(String.java:216)
-        at java.lang.StringBuffer.toString(StringBuffer.java:585)
-        at org.apache.commons.dbcp.PoolingConnection$PStmtKey.hashCode(PoolingConnection.java:296)
-        at java.util.HashMap.get(HashMap.java:300)
-        at org.apache.commons.pool.impl.GenericKeyedObjectPool.decrementActiveCount(GenericKeyedObjectPool.java:1085)
-        at org.apache.commons.pool.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:882)
-        at org.apache.commons.dbcp.PoolablePreparedStatement.close(PoolablePreparedStatement.java:80)
-        at org.apache.commons.dbcp.DelegatingStatement.close(DelegatingStatement.java:168)
-        at com.netcore.smsapps.stock.db.CompanyDaoImpl.updateCompanyQuote(CompanyDaoImpl.java:173)
-        at com.netcore.smsapps.stock.vendor.MyirisVendor.readScripQuotes(MyirisVendor.java:159)
-        at com.netcore.smsapps.stock.update.StockUpdateData.execute(StockUpdateData.java:38)
-        at org.quartz.core.JobRunShell.run(JobRunShell.java:207)
-        at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:525).</pre>
+<pre>
+[STDERR] 2013-03-08 13:47:37.458:WARN:oejs.ServletHandler:qtp1493293146-16: Error for /blogs
+[STDERR] java.lang.OutOfMemoryError: Java heap space
+[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.createChunk(DeferredDocumentImpl.java:1862)
+[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.ensureCapacity(DeferredDocumentImpl.java:1769)
+[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.createNode(DeferredDocumentImpl.java:1786)
+[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.createDeferredDocument(DeferredDocumentImpl.java:220)
+[STDERR] 	at org.apache.xerces.parsers.AbstractDOMParser.startDocument(AbstractDOMParser.java:714)
+[STDERR] 	at org.apache.xerces.impl.XMLNamespaceBinder.startDocument(XMLNamespaceBinder.java:444)
+[STDERR] 	at org.apache.xerces.impl.dtd.XMLDTDValidator.startDocument(XMLDTDValidator.java:644)
+[STDERR] 	at org.apache.xerces.impl.XMLDocumentScannerImpl.startEntity(XMLDocumentScannerImpl.java:431)
+[STDERR] 	at org.apache.xerces.impl.XMLEntityManager.startEntity(XMLEntityManager.java:878)
+[STDERR] 	at org.apache.xerces.impl.XMLEntityManager.startDocumentEntity(XMLEntityManager.java:741)
+[STDERR] 	at org.apache.xerces.impl.XMLDocumentScannerImpl.setInputSource(XMLDocumentScannerImpl.java:260)
+[STDERR] 	at org.apache.xerces.parsers.DTDConfiguration.parse(DTDConfiguration.java:498)
+[STDERR] 	at org.apache.xerces.parsers.DTDConfiguration.parse(DTDConfiguration.java:580)
+[STDERR] 	at org.apache.xerces.parsers.XMLParser.parse(XMLParser.java:152)
+[STDERR] 	at org.apache.xerces.parsers.DOMParser.parse(DOMParser.java:253)
+[STDERR] 	at org.apache.xerces.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:201)
+[STDERR] 	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+[STDERR] 	at no.kantega.blog.listener.BlogSessionListener.getBlogConfig(BlogSessionListener.java:70)
+[STDERR] 	at no.kantega.blog.listener.BlogSessionListener.sessionCreated(BlogSessionListener.java:58)
+[STDERR] 	at org.eclipse.jetty.server.session.AbstractSessionManager.addSession(AbstractSessionManager.java:721)
+
+</pre>
             
             <p>Regards,<br/> 
             BOFH</p>

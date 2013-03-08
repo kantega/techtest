@@ -1,12 +1,19 @@
 package no.kantega.blog.listener;
 
+import no.kantega.blog.config.BlogConfig;
 import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.model.Blog;
 import no.kantega.blog.model.BlogPost;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -46,10 +53,26 @@ public class BlogSessionListener implements HttpSessionListener {
 
             // 8 hours sessions
             session.setMaxInactiveInterval(8 * 60 * 60);
+
+
+            session.setAttribute("blogConfig", getBlogConfig(sessionEvent.getSession().getServletContext()));
         } finally {
             sessions.put(session.getId(), session);
             getTotalSessionCount.incrementAndGet();
         }
+    }
+
+    /**
+     * Parse the blog config
+     */
+    private BlogConfig getBlogConfig(ServletContext servletContext) {
+        try {
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(servletContext.getResourceAsStream("/WEB-INF/blog-config.xml"));
+            return new BlogConfig(doc);
+        } catch (SAXException | IOException | ParserConfigurationException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     /**
