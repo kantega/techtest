@@ -4,6 +4,7 @@ import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.model.Blog;
 import no.kantega.blog.model.BlogPost;
 import no.kantega.blog.model.BlogPostComment;
+import no.kantega.blog.popularity.Stats;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -30,25 +31,34 @@ public class BlogServlet extends HttpServlet {
 
     private BlogDao dao;
     private volatile String content;
+    private Stats stats;
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         this.dao = getService(BlogDao.class, servletConfig.getServletContext());
+        this.stats = getService(Stats.class, servletConfig.getServletContext());
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(isBlogPostRequest(req)) {
             BlogPost post = getBlogPost(req);
+            countBlog(post.getBlog());
             req.setAttribute("post", post);
             req.setAttribute("comments", dao.getComments(post));
             req.getRequestDispatcher("/WEB-INF/jsp/post.jsp").forward(req, resp);
+
         } else {
             Blog blog = getBlog(req);
+            countBlog(blog);
             req.setAttribute("blog", blog);
             req.setAttribute("posts", dao.getBlogPosts(blog));
             req.getRequestDispatcher("/WEB-INF/jsp/blog.jsp").forward(req, resp);
         }
+    }
+
+    private void countBlog(Blog blog) {
+        stats.addVisitTo(blog);
     }
 
     /**

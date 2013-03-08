@@ -1,5 +1,6 @@
 package no.kantega.blog.initializer;
 
+import no.kantega.blog.popularity.Stats;
 import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.filter.CharEncodingFilter;
 import no.kantega.blog.filter.ErrorFilter;
@@ -48,6 +49,13 @@ public class BlogInitializer implements ServletContainerInitializer {
         configureCharEncFilter(servletContext);
 
         configureErrorFilter(servletContext);
+
+        configureStats(servletContext);
+    }
+
+    private void configureStats(ServletContext servletContext) {
+
+        addService(Stats.class, new Stats(), servletContext);
     }
 
     private void configureErrorFilter(ServletContext servletContext) {
@@ -100,7 +108,6 @@ public class BlogInitializer implements ServletContainerInitializer {
                     "create table blogpost (blogpostid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                             " blogid integer NOT NULL,  " +
                             " posttitle varchar(255) NOT NULL, " +
-                            " blogandposttitle varchar(255) NOT NULL, " +
                             " postcontent clob (500K) NOT NULL, " +
                             " publishdate timestamp NOT NULL, " +
                             " CONSTRAINT unique_post_title_in_blog UNIQUE (blogid, posttitle))",

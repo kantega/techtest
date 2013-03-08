@@ -55,25 +55,14 @@ public class BlogSessionListener implements HttpSessionListener {
             session.setMaxInactiveInterval(8 * 60 * 60);
 
 
-            session.setAttribute("blogConfig", getBlogConfig(sessionEvent.getSession().getServletContext()));
+
         } finally {
             sessions.put(session.getId(), session);
             getTotalSessionCount.incrementAndGet();
         }
     }
 
-    /**
-     * Parse the blog config
-     */
-    private BlogConfig getBlogConfig(ServletContext servletContext) {
-        try {
-            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(servletContext.getResourceAsStream("/WEB-INF/blog-config.xml"));
-            return new BlogConfig(doc);
-        } catch (SAXException | IOException | ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        }
 
-    }
 
     /**
      * Called when a session is destroyed/invalidated (e.g. timeout).
