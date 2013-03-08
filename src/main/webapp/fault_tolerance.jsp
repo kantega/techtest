@@ -47,7 +47,7 @@
         Keep an eye on the <a href="status">status page</a> to see what happens with the connection pool.
     </p>
     
-    <a href="/">Back...</>
+    <a href="/">Back...</a>
         
 </c:set>
 

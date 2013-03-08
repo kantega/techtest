@@ -68,7 +68,7 @@
         </tr>
     </table>
     
-    <a href="/">Back...</>
+    <a href="/">Back...</a>
         
 </c:set>
 

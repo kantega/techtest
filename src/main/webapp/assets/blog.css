@@ -45,3 +45,16 @@ td.numeric {
     top:0;
     width: 10em;
 }
+
+.previewPane {
+    border: 1px solid gray;
+    background-color: #fffafa;
+    padding: 1em;
+    margin:1em;
+    max-height: 10em;
+    overflow-y: auto;
+}
+
+td {
+    vertical-align: top;
+}

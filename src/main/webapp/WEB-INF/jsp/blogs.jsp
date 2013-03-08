@@ -4,6 +4,10 @@
 <c:set var="main" scope="request">
 
 
+    <h1>SuperBlog</h1>
+    <p class="ingress">
+        Welcome to Superblog!
+    </p>
     <form action="blogs" method="POST">
         <fieldset style="width: 500px">
             <legend>Create new blog</legend>

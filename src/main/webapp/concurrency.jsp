@@ -44,7 +44,7 @@
     
     <p class="tip">Remember to check that they can read their own comment.</p>
     
-    <a href="/">Back...</>
+    <a href="/">Back...</a>
         
 </c:set>
 

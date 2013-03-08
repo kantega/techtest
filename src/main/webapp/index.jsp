@@ -21,28 +21,8 @@
     
     <h2>Tasks:</h2>
 
-    <h3>Task 1: Create a blog!</h3>
-    <ul>
-        <li>Create your own blog</li>
-        <li>Write a blog post</li>
-        <li>Comment on it!</li>
-        <li>Log in as administrator</li>
-        <li>Delete a blog</li>
-    </ul>
+    <h3>Task 1: <a href="/create_a_blog.jsp">Create your own blog</a></h3>
 
-    <h3>Interlude</h3>
-    <p>Instructions on how to write simple read-only test to open index, go to own blog, open a comment. HTTP GET.</p>
-    <p>Introduce: Thread groups, reports, samplers, assertions, http common. Not cookie managers!</p>
-    <p>Log in/out</p>
-
-    <h3>Task 2: Measure simple, single threaded performance</h3>
-
-    <p>Getting to know the application and using JMeter</p>
-    <p>
-        Expand the test from the interlude to add posts and comments, according to the
-        <a href="loadProfile.jsp">load profile</a>
-    </p>
-    
     <h3>Interlude</h3>
     <p>We must post data (comments), and check that the data vi posted is the one we are getting. (Kenneth)</p>
 

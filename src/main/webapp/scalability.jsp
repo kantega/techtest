@@ -47,7 +47,7 @@
        <li>Volume: n+1 select - get blog posts</li>
     </ul>
 
-    <a href="/">Back...</>
+    <a href="/">Back...</a>
         
 </c:set>
 

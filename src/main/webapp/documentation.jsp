@@ -11,7 +11,7 @@
         <li><a href="http://jmeter.apache.org/usermanual/test_plan.html">JMeter Elements in Test Plan</a></li>
     </ul>
     
-    <a href="/">Back...</>
+    <a href="/">Back...</a>
         
 </c:set>
 

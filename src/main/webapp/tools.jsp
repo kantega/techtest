@@ -12,7 +12,7 @@
         <li><a href="http://visualvm.java.net">http://visualvm.java.net</a></li>
     </ul>
     
-    <a href="/">Back...</>
+    <a href="/">Back...</a>
         
 </c:set>
 
