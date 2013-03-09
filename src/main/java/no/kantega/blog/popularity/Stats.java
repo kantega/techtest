@@ -15,13 +15,15 @@ public class Stats {
     private ConcurrentHashMap<Long, AtomicLong> viewsPerBlog = new ConcurrentHashMap<>();
 
     /**
-     * Adds a visit to a given blog.
+     * Adds a visit to a given blog. New blogs are ignored as they have no id.
      * 
      * @param blog The blog that is visited  
      */
     public void addVisitTo(Blog blog) {
-        viewsPerBlog.putIfAbsent(blog.getId(), new AtomicLong());
-        viewsPerBlog.get(blog.getId()).incrementAndGet();
+        if (!blog.isNew()) {
+            viewsPerBlog.putIfAbsent(blog.getId(), new AtomicLong());
+            viewsPerBlog.get(blog.getId()).incrementAndGet();
+        }
     }
 
     /**

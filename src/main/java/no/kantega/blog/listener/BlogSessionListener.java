@@ -35,7 +35,6 @@ public class BlogSessionListener implements HttpSessionListener {
 
             Map<String, BlogPost> blogPostCache = new HashMap<>();
 
-
             for(Blog blog : dao.getAllBlogs()) {
                 for(BlogPost post : dao.getBlogPosts(blog)) {
                     blogPostCache.put(blog.getLinkId() +"/" + post.getLinkId(), post);
@@ -46,9 +45,6 @@ public class BlogSessionListener implements HttpSessionListener {
 
             // 8 hours sessions
             session.setMaxInactiveInterval(8 * 60 * 60);
-
-
-
         } finally {
             sessions.put(session.getId(), session);
             getTotalSessionCount.incrementAndGet();
