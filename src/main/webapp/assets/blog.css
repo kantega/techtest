@@ -130,3 +130,23 @@ textarea {
     -webkit-transition: 0s;
             transition: 0s;
 }
+table {
+    border-collapse: collapse;
+}
+thead th {
+    background-color: #eee;
+}
+th + th {
+    text-align: center;
+}
+th {
+    text-align: left;
+    font-weight: bold;
+}
+td.number {
+    text-align: right;
+    padding-left: 1em;
+}
+tr {
+    border-bottom: 1px solid #000000;
+}

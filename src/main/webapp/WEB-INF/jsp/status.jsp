@@ -10,19 +10,19 @@
     <h2>Database</h2>
 <table id="dataSourceInfo" summary="information about database system resource usage">
     <tr>
-        <td>Datasource:</td>
+        <th>Datasource:</th>
         <td>${dataSource['class'].simpleName}</td>
     </tr>
     <tr>
-        <td>maxActive:</td>
+        <th>maxActive:</th>
         <td>${dataSource.maxActive}</td>
     </tr>
     <tr>
-        <td>numActive:</td>
+        <th>numActive:</th>
         <td>${dataSource.numActive}</td>
     </tr>
     <tr>
-        <td>numIdle:</td>
+        <th>numIdle:</th>
         <td>${dataSource.numIdle}</td>
     </tr>
 </table>
@@ -30,61 +30,62 @@
     <h2>Memory</h2>
 
 <table summary="information about used memory">
+    <thead>
     <tr>
         <th>Mem</th>
         <th>Used</th>
         <th>Committed</th>
         <th>Max</th>
     </tr>
-
+    </thead>
+    <tbody>
     <tr>
-        <td>
+        <th>
             Heap
+        </th>
+        <td class="number">
+            <fmt:formatNumber maxFractionDigits="3" minFractionDigits="3" value="${memory.heapMemoryUsage.used/1024/1024}"/>
         </td>
-        <td class="numeric">
-            <fmt:formatNumber value="${memory.heapMemoryUsage.used/1024/1024}"/>
+        <td class="number">
+            <fmt:formatNumber maxFractionDigits="3" minFractionDigits="3" value="${memory.heapMemoryUsage.committed/1024/1024}"/>
         </td>
-        <td class="numeric">
-            <fmt:formatNumber value="${memory.heapMemoryUsage.committed/1024/1024}"/>
-        </td>
-        <td class="numeric">
-            <fmt:formatNumber value="${memory.heapMemoryUsage.max/1024/1024}"/>
+        <td class="number">
+            <fmt:formatNumber maxFractionDigits="3" minFractionDigits="3" value="${memory.heapMemoryUsage.max/1024/1024}"/>
         </td>
 
     </tr>
     <tr>
-        <td>
+        <th>
             Non-heap
+        </th>
+        <td class="number">
+            <fmt:formatNumber maxFractionDigits="3" minFractionDigits="3" value="${memory.nonHeapMemoryUsage.used/1024/1024}"/>
         </td>
-        <td class="numeric">
-            <fmt:formatNumber value="${memory.nonHeapMemoryUsage.used/1024/1024}"/>
+        <td class="number">
+            <fmt:formatNumber maxFractionDigits="3" minFractionDigits="3" value="${memory.nonHeapMemoryUsage.committed/1024/1024}"/>
         </td>
-        <td class="numeric">
-            <fmt:formatNumber value="${memory.nonHeapMemoryUsage.committed/1024/1024}"/>
+        <td class="number">
+            <fmt:formatNumber maxFractionDigits="3" minFractionDigits="3" value="${memory.nonHeapMemoryUsage.max/1024/1024}"/>
         </td>
-        <td class="numeric">
-            <fmt:formatNumber value="${memory.nonHeapMemoryUsage.max/1024/1024}"/>
-        </td>
-
     </tr>
-
+    </tbody>
 </table>
 
     <h2>Sessions</h2>
     <table>
         <tr>
-            <td>
+            <th>
                 Current active sessions:
-            </td>
-            <td>
+            </th>
+            <td class="number">
                     ${activeSessionCount}
             </td>
         </tr>
         <tr>
-            <td>
+            <th>
                 Total sessions created:
-            </td>
-            <td>
+            </th>
+            <td class="number">
                 ${totalSessionCount}
             </td>
         </tr>

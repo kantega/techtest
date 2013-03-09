@@ -25,48 +25,54 @@
     
     <p>The following statistics are also taken from the production environment, over a period of 1 hour.</p>
     
-    <table border="1">
+    <table>
+        <thead
         <tr>
             <th>URL</th>
             <th>Request count</th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
-            <td>/blogs (Frontpage)</td>
-            <td>2501</td>
+            <th>/blogs (Frontpage)</th>
+            <td class="number">2501</td>
         </tr>
         <tr>
-            <td>/blogs (Create blog)</td>
-            <td>240</td>
+            <th>/blogs (Create blog)</th>
+            <td class="number">240</td>
         </tr>
         <tr>
-            <td>/blog/... (Access existing blog)</td>
-            <td>2707</td>
+            <th>/blog/... (Access existing blog)</th>
+            <td class="number">2707</td>
         </tr>
         <tr>
-            <td>/blog/... (Create blog post)</td>
-            <td>1244</td>
+            <th>/blog/... (Create blog post)</th>
+            <td class="number">1244</td>
         </tr>
         <tr>
-            <td>/blog/.../... (Comment blog post)</td>
-            <td>2019</td>
+            <th>/blog/.../... (Comment blog post)</th>
+            <td class="number">2019</td>
         </tr>
         <tr>
-            <td>/admin (Access admin page)</td>
-            <td>198</td>
+            <th>/admin (Access admin page)</th>
+            <td class="number">198</td>
         </tr>
         <tr>
-            <td>/login (Administrators logging in)</td>
-            <td>191</td>
+            <th>/login (Administrators logging in)</th>
+            <td class="number">191</td>
         </tr>
         <tr>
-            <td>/blogs?delete=... (Administrators deleting blog)</td>
-            <td>11</td>
+            <th>/blogs?delete=... (Administrators deleting blog)</th>
+            <td class="number">11</td>
         </tr>
         <tr>
-            <td>/logout (Administrators loggin out)</td>
-            <td>63</td>
+            <th>/logout (Administrators loggin out)</ths>
+            <td class="number">63</td>
         </tr>
+        </tbody>
     </table>
+    
+    <br/>
     
     <a href="/">Back...</a>
         
