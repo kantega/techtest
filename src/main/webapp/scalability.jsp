@@ -34,17 +34,9 @@
     
     <p>Write a performance test uses the <a href="loadProfile.jsp">load profile</a> and check how many simultaneous users we can handle within the <a href="sla.jsp">SLA</a>.</p>
     
-    <p class="tip">Start with a few users.</p>
+    <p class="tip">Start with a few users, increase the number of users.</p>
     
-    <p class="tip">
-        Database connection pool too small? Locking? Too synchronized?
-        Show status page?
-    </p>
-
-    <ul>
-       <li>Users: Synchronize db pool</li>
-       <li>Volume: n+1 select - get blog posts</li>
-    </ul>
+    <p class="tip">Stop adding users when you breach the SLA</p>
 
     <a href="/">Back...</a>
         
