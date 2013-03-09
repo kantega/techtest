@@ -36,14 +36,11 @@
             }
 
             var commentLinks = document.querySelectorAll("a.formCommentLink");
-
             for(var i = 0, l = commentLinks.length; i < l; i++) {
                 var link = commentLinks[i];
                 link.addEventListener("click", commentLinkClicked);
             }
         });
-
-
     </script>
     <script type="text/html" id="defaultContent">
 Something __really__ weird happend today on my way to school:
@@ -52,48 +49,36 @@ Something __really__ weird happend today on my way to school:
 * Then my phone started ringing..
 
 </script>
-
 </c:set>
 
 <c:set var="backgroundColor" value="${blog.color}" scope="request"/>
 
 <c:set var="main" scope="request">
-
-
     <h1>${blog.name}</h1>
-
     <p class="ingress">
         <a href="#" onclick="this.style.display='none';document.querySelector('#postform').style.display='block'">+ New blog post</a>
     </p>
     <div id="postform" style="display: none">
         <form action="${blog.linkId}" method="POST">
-                    <fieldset>
-                        <legend>New blog post</legend>
-                        <p>
-                        <label for="title">Title:</label> <input id="title" name="title" size="60" value="My new blogpost">
-                        </p>
-
-                            <textarea name="content" style="width:100%;height: 10em" id="content"></textarea>
-                        <p>
-                        <input type="submit" value="Save">
-                        </p>
-
-                        <div class="previewPane">
-                            <p>Preview:</p>
-                            <h2 id="titlePreview"></h2>
-                            <div id="contentPreview"></div>
-                        </div>
-                    </fieldset>
-
-                </form>
-
-
-
-
+            <fieldset>
+                <legend>New blog post</legend>
+                <p>
+                    <label for="title">Title:</label> <input id="title" name="title" size="60" value="My new blogpost">
+                </p>
+                    <textarea name="content" style="width:100%;height: 10em" id="content"></textarea>
+                <p>
+                    <input type="submit" value="Save">
+                </p>
+                <div class="previewPane">
+                    <p>Preview:</p>
+                    <h2 id="titlePreview"></h2>
+                    <div id="contentPreview"></div>
+                </div>
+            </fieldset>
+        </form>
     </div>
 
     <c:forEach var="post" items="${posts}">
-
         <h2>
             <a href="<%=request.getContextPath()%>/blog/${post.blog.linkId}/${post.linkId}">${post.title}</a>
         </h2>
@@ -106,7 +91,7 @@ Something __really__ weird happend today on my way to school:
                     Zero comments. <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Be the first to comment!</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="">${post.commentCount} comments.</a>
+                    ${post.commentCount} comments.
                     <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Add a comment</a>
                 </c:otherwise>
             </c:choose>
@@ -125,7 +110,5 @@ Something __really__ weird happend today on my way to school:
         </div>
     </c:forEach>
 </c:set>
-
-
 
 <jsp:include page="design.jsp"/>
