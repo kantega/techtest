@@ -91,7 +91,7 @@ Something __really__ weird happend today on my way to school:
                     Zero comments. <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Be the first to comment!</a>
                 </c:when>
                 <c:otherwise>
-                    ${post.commentCount} comments.
+                    <a href="<%=request.getContextPath()%>/blog/${post.blog.linkId}/${post.linkId}">${post.commentCount} comments</a>.
                     <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Add a comment</a>
                 </c:otherwise>
             </c:choose>
