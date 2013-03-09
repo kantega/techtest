@@ -16,6 +16,7 @@ public final class Services {
      * @param servletContext The servlet context to get the service from
      * @return Service of a given type
      */
+    @SuppressWarnings("unchecked")
     public static <T> T getService(Class<T> clazz, ServletContext servletContext) {
         return (T) servletContext.getAttribute(clazz.getName());
     }
