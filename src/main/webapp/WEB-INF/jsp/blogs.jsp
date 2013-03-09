@@ -2,7 +2,6 @@
 
 <c:set var="title" value="Blogs" scope="request"/>
 <c:set var="main" scope="request">
-
     <h1>SuperBlog</h1>
     <p class="ingress">
         Welcome to Superblog!
@@ -40,9 +39,7 @@
                     </td>
                 </tr>
             </table>
-
-            <br>
-
+            <br/>
         </fieldset>
     </form>
 
@@ -60,7 +57,6 @@
             </c:if>
         </li>
     </c:forEach>
-
 </ul>
 </c:set>
 

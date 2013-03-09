@@ -73,7 +73,6 @@
     <h2>Sessions</h2>
     <table>
         <tr>
-
             <td>
                 Current active sessions:
             </td>

@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <c:set var="title" value="Blog Post" scope="request"/>
 
 <c:set var="head" scope="request">
@@ -35,15 +34,12 @@
                 link.addEventListener("click", commentLinkClicked);
             }
         });
-
-
     </script>
 </c:set>
 
 <c:set var="backgroundColor" value="${post.blog.color}" scope="request"/>
 
 <c:set var="main" scope="request">
-
         Blog: <a href="/blog/${post.blog.linkId}">${post.blog.name}</a>
 
         <h2>${post.title}</h2>
@@ -51,7 +47,6 @@
         <p class="publishDate">Published ${post.getPublishDateInFormat('yyyy-MM-dd HH:mm')}</p>
         <script type="text/html" class="content"><c:out value="${post.content}"/></script>
         <p class="numComments">
-
             <c:choose>
                 <c:when test="${post.commentCount == 0}">
                     Zero comments. <a href="#" class="formCommentLink" data-postId="${post.blogPostId}">Be the first to comment!</a>
@@ -85,7 +80,5 @@
         </div>
     </c:forEach>
 </c:set>
-
-
 
 <jsp:include page="design.jsp"/>

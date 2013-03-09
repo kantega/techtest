@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
 <html>
 <head>
     <title>Kantega testing workshop - ${title}</title>
@@ -89,9 +88,6 @@
 
 </div> <!-- Page container -->
 
-
-
-
 <script type="text/javascript">
     WebFontConfig = {
         google: { families: [ 'PT+Sans:400,700,400italic,700italic:latin' ] }
@@ -106,6 +102,5 @@
         s.parentNode.insertBefore(wf, s);
     })();
 </script>
-
 </body>
 </html>
