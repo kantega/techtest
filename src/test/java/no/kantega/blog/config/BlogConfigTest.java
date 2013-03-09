@@ -9,12 +9,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
- *
+ * Unit test for blog config.
  */
-
 public class BlogConfigTest {
 
     @Test
@@ -22,7 +21,7 @@ public class BlogConfigTest {
 
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File("src/main/webapp/WEB-INF/blog-config.xml"));
 
-        assertEquals(8283, new BlogConfig(doc).getLogo().length);
+        assertEquals("Logo should have correct size", 8283, new BlogConfig(doc).getLogo().length);
     }
 
 }
