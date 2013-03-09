@@ -12,7 +12,6 @@
             <link media="screen" rel="stylesheet" href="/assets/css/desktop.css"/>"/>
             <link media="screen" rel="stylesheet" href="/assets/css/ie8.css"/>"/>
         <![endif]-->
-
     <style type="text/css">
         .articleLayout {
             <c:if test="${not empty backgroundColor}">
@@ -22,12 +21,9 @@
     </style>
     ${head}
 </head>
-
 <body>
 <div id="page-container">
-
 <div id="topsection" class="always-fullwidth">
-<!--      -->
     <div id="header">
         <div class="container">
             <div class="row">
@@ -39,10 +35,7 @@
                 </div>
 
                 <section class="hidden-phone">
-
 <nav id="desktop-navigation" class="always-fullwidth">
-
-
     <div class="span8" id="mainMenu">
         <ul>
             <li>
@@ -87,20 +80,5 @@
 </div>
 
 </div> <!-- Page container -->
-
-<script type="text/javascript">
-    WebFontConfig = {
-        google: { families: [ 'PT+Sans:400,700,400italic,700italic:latin' ] }
-    };
-    (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-    })();
-</script>
 </body>
 </html>
