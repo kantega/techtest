@@ -1,19 +1,12 @@
 package no.kantega.blog.listener;
 
-import no.kantega.blog.config.BlogConfig;
 import no.kantega.blog.dao.BlogDao;
 import no.kantega.blog.model.Blog;
 import no.kantega.blog.model.BlogPost;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
