@@ -72,6 +72,10 @@ td {
     overflow: hidden;
 
 }
+.command {
+    font-family: monospace;
+    background-color: #eee;    
+}
 
 .mailheader p {
     margin-top: 0;
