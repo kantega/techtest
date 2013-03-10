@@ -21,7 +21,7 @@ import static no.kantega.blog.services.Services.getService;
 /**
  *
  */
-@WebServlet(urlPatterns = {"/popularity", "/logout"})
+@WebServlet(urlPatterns = {"/popularity"})
 public class PopularityServlet extends HttpServlet {
 
     @Override
