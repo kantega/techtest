@@ -27,7 +27,7 @@ public class DBInitializerTest {
     
     @Test
     public void testInitializeDatasource() throws Exception {
-        DataSource ds = DBInitializer.initializeDatasource("jdbc:derby://localhost:1529/blogdb;create=true");
+        DataSource ds = DBInitializer.initializeDatasource("jdbc:derby://localhost:1529/unittest_dbinit;create=true");
         assertNotNull("Should be able to get connection", ds.getConnection());
         // Second time to catch exception:
         DBInitializer.initializeDatasource("jdbc:derby://localhost:1529/blogdb;create=true");        
