@@ -5,10 +5,9 @@
 <c:set var="main" scope="request">
     <h1>Load Profile</h1>
     
-    <h2>User behaviour</h2>
-    
+    <h2>User behavior</h2>
     <p>
-        After analysing logs in the production environment, the following characteristics represent how the
+        After analyzing logs in the production environment, the following characteristics represent how the
         users/administrators are using the application.
     </p>
     <ul>
@@ -29,44 +28,70 @@
         <thead>
         <tr>
             <th>URL</th>
+            <th>HTTP Verb</th>
+            <th>Description</th>
             <th>Request count</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th>/blogs (Frontpage)</th>
+            <th>/blogs</th>
+            <td>GET</td>
+            <td>Frontpage</td>
             <td class="number">2501</td>
         </tr>
         <tr>
-            <th>/blogs (Create blog)</th>
+            <th>/blogs</th>
+            <td>POST</td>
+            <td>Create Blog</td>
             <td class="number">240</td>
         </tr>
         <tr>
-            <th>/blog/... (Access existing blog)</th>
+            <th>/blog/&lt;blogid&gt;</th>
+            <td>GET</td>
+            <td>Access existing blog</td>
             <td class="number">2707</td>
         </tr>
         <tr>
-            <th>/blog/... (Create blog post)</th>
+            <th>/blog/&lt;blogid&gt;</th>
+            <td>POST</td>
+            <td>Create blog post</td>
             <td class="number">1244</td>
         </tr>
         <tr>
-            <th>/blog/.../... (Comment blog post)</th>
+            <th>/blog/&lt;blogid&gt;?commentAuthor=&lt;author&gt;</th>
+            <td>POST</td>
+            <td>Add comment to blog post</td>
             <td class="number">2019</td>
         </tr>
         <tr>
-            <th>/admin (Access admin page)</th>
+            <th>/admin</th>
+            <td>GET</td>
+            <td>Access admin page</td>
             <td class="number">198</td>
         </tr>
         <tr>
-            <th>/login (Administrators logging in)</th>
+            <th>/login</th>
+            <td>GET</td>
+            <td>Show login form</td>
+            <td class="number">203</td>
+        </tr>
+        <tr>
+            <th>/login</th>
+            <td>POST</td>
+            <td>Administrator logging in</td>
             <td class="number">191</td>
         </tr>
         <tr>
-            <th>/blogs?delete=... (Administrators deleting blog)</th>
+            <th>/blogs?delete=&lt;blogid&gt;</th>
+            <td>POST</td>
+            <td>Administrator deleting blog</td>
             <td class="number">11</td>
         </tr>
         <tr>
-            <th>/logout (Administrators loggin out)</ths>
+            <th>/logout</th>
+            <td>GET</td>
+            <td>Administrator logging out</td>
             <td class="number">63</td>
         </tr>
         </tbody>
