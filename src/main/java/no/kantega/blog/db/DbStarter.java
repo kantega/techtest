@@ -27,7 +27,7 @@ public final class DbStarter {
         System.setProperty("visualvm.display.name", "TechBlogDB");
         System.out.println("Starting database");
         NetworkServerControl server = startDb(PORT_NUMBER);
-
+        
         //server.setMaxThreads(5);
 
         System.out.println("Database server started, press ENTER to shut down");
@@ -49,7 +49,37 @@ public final class DbStarter {
         System.setProperty("derby.system.home", "target");
         NetworkServerControl server = new NetworkServerControl(InetAddress.getByName("localhost"), portNr);
         server.start(null);
+        waitForDbStarted(server);
         return server;
+    }
+    
+    /**
+     * Waits for the database to start.
+     * 
+     * @param server The server to wait for
+     * @throws InterruptedException In case the wait is interrupted
+     */
+    private static void waitForDbStarted(NetworkServerControl server) throws InterruptedException {
+        long maxSleepTime = 10l * 1000l;
+        long endTime = System.currentTimeMillis() + maxSleepTime;
+        boolean ping = false;
+        while (!ping && System.currentTimeMillis() < endTime) {
+            ping = doPing(server);
+        }
+        if (!ping) {
+            throw new RuntimeException("Failed to start database in reasonable time");
+        }
+    } 
+    
+    private static boolean doPing(NetworkServerControl server) throws InterruptedException {
+        boolean ping = false;
+        try {
+            server.ping();
+            ping = true;
+        } catch (Exception e) {
+            Thread.sleep(100);
+        }
+        return ping;
     }
     
     /**
