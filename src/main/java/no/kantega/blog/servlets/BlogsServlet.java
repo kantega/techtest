@@ -24,7 +24,7 @@ import static no.kantega.blog.services.Services.getService;
 @ServletSecurity(httpMethodConstraints = @HttpMethodConstraint("GET"))
 public class BlogsServlet extends HttpServlet {
 
-    private BlogDao dao;
+    private transient BlogDao dao;
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {

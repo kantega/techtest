@@ -1,8 +1,6 @@
 package no.kantega.blog.dao;
 
 import no.kantega.blog.model.Blog;
-import no.kantega.blog.model.BlogPost;
-import no.kantega.blog.model.BlogPostComment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -44,7 +42,14 @@ public class BlogDao {
         }, params);
     }
 
-    private Blog getBlogFromResultSet(ResultSet resultSet) throws SQLException {
+    /**
+     * Converts resultset columns to blog object.
+     * 
+     * @param resultSet The resultset to read from
+     * @return Blog object
+     * @throws SQLException If blog data can't be read from result set 
+     */
+    public static Blog getBlogFromResultSet(ResultSet resultSet) throws SQLException {
         Blog blog = new Blog();
         blog.setId(resultSet.getLong("blogid"));
         blog.setName(resultSet.getString("blogname"));
@@ -73,7 +78,6 @@ public class BlogDao {
         } else {
             template.update("update blog set blogname=?, color=? where blogid=?", blog.getName(), blog.getColor(), blog.getId());
         }
-
     }
 
     /**
@@ -90,6 +94,21 @@ public class BlogDao {
         }
         return blogs.iterator().next();
     }
+    
+        /**
+     * Return a blog given the id of the blog.
+     * 
+     * @param blogId The id of the blog
+     * @return Blog with the given id
+     * @throws IllegalArgumentException If no blog with the given name can be found
+     */
+    public Blog getBlogById(long blogId) {
+        List<Blog> blogs = getBlogsWhere("where blogid=?", blogId);
+        if(blogs.isEmpty()) {
+            throw new IllegalArgumentException("Blog not found with id: " + blogId);
+        }
+        return blogs.iterator().next();
+    }
 
     /**
      * Delete a blog given its name.
@@ -101,152 +120,4 @@ public class BlogDao {
         template.update("DELETE FROM blog WHERE blogname=?", blog.getName());
     }
 
-    /**
-     * Saves a blog post.
-     * 
-     * @param post the blog post to save to the database 
-     */
-    public void saveOrUpdate(BlogPost post) {
-        if (post.isNew()) {
-            template.update("INSERT INTO blogpost (blogid, posttitle, postcontent, publishdate) VALUES (?, ?, ?, ?)",
-                    post.getBlog().getId(),
-                    post.getTitle(),
-                    post.getContent(),
-                    new Timestamp(System.currentTimeMillis()));
-        } else {
-            template.update("update blog set posttitle=?, postcontent=? where blogpostid=?",
-                    post.getTitle(),
-                    post.getBlogPostId(),
-                    post.getBlogPostId());
-        }
-    }
-
-    /**
-     * Return all blog posts for a given blog.
-     * 
-     * @param blog The blog to read all blog post for
-     * @return List of blog posts in this blog
-     */
-    public List<BlogPost> getBlogPosts(Blog blog) {
-        return getBlogPosts("where blogpost.blogid=?", blog.getId());
-    }
-
-    private List<BlogPost> getBlogPosts(String whereClaus, Object... parameters) {
-        boolean fast = false;
-        List<BlogPost> result;
-        if (fast) {
-            result = getBlogPostsEfficient(whereClaus, parameters);
-        } else {
-            result = getBlogPostsInefficient(whereClaus, parameters);
-        }
-        return result;
-    }
-
-    /**
-     * Efficient way to return blog posts.
-     */
-    private List<BlogPost> getBlogPostsEfficient(String whereClaus, Object[] parameters) {
-        String sql = "select blog.blogid, blog.blogname, blog.color, blogpost.blogpostid, blogpost.posttitle, blogpost.postcontent, blogpost.publishdate, " +
-                " (select count(*) from blogpostcomment where blogpostcomment.blogpostid=blogpost.blogpostid) as commentcount " +
-                " from blogpost left join blog on blog.blogid=blogpost.blogid " + whereClaus + " order by  blogpost.blogpostid desc";
-
-        return template.query(sql, new RowMapper<BlogPost>() {
-            @Override
-            public BlogPost mapRow(ResultSet rs, int i) throws SQLException {
-                Blog blog = getBlogFromResultSet(rs);
-                BlogPost post = new BlogPost(blog);
-                post.setBlogPostId(rs.getInt("blogpostid"));
-                post.setTitle(rs.getString("posttitle"));
-                post.setContent(rs.getString("postcontent"));
-                post.setPublishDate(rs.getTimestamp("publishdate"));
-                post.setCommentCount(rs.getInt("commentcount"));
-                return post;
-            }
-        }, parameters);
-    }
-
-    /**
-     * Inefficient way to return blog posts.
-     */
-    private List<BlogPost> getBlogPostsInefficient(String whereClaus, Object[] parameters) {
-        String sql = "select blogpost.blogid, blogpost.blogpostid, blogpost.posttitle, blogpost.postcontent, blogpost.publishdate, " +
-                " (select count(*) from blogpostcomment where blogpostcomment.blogpostid=blogpost.blogpostid) as commentcount " +
-                " from blogpost " + whereClaus + " order by  blogpost.blogpostid desc";
-
-        return template.query(sql, new RowMapper<BlogPost>() {
-            @Override
-            public BlogPost mapRow(ResultSet rs, int i) throws SQLException {
-                Blog blog = getBlogsWhere("where blogid=?", rs.getInt("blogid")).iterator().next();
-                BlogPost post = new BlogPost(blog);
-                post.setBlogPostId(rs.getInt("blogpostid"));
-                post.setTitle(rs.getString("posttitle"));
-                post.setContent(rs.getString("postcontent"));
-                post.setPublishDate(rs.getTimestamp("publishdate"));
-                post.setCommentCount(rs.getInt("commentcount"));
-                return post;
-            }
-        }, parameters);
-    }
-    
-    /**
-     * Return a blog post given an id of the blog post.
-     * 
-     * @param blogPostId The id of the blog post
-     * @return The blog post with this ID
-     */
-    public BlogPost getBlogPost(long blogPostId) {
-        return getBlogPosts("where blogpost.blogpostid=?", blogPostId).iterator().next();
-    }
-
-    /**
-     * Return a blog post given the blog and the name of the post.
-     * 
-     * @param blog The blog this post belongs to
-     * @param postName The name of the blog post
-     * @return The blog post if found
-     */
-    public BlogPost getBlogPost(Blog blog, String postName) {
-        return getBlogPosts("where blogpost.blogid=? and blogpost.posttitle=?", blog.getId(), postName).iterator().next();
-    }
-
-    /**
-     * Saves a blog comment.
-     * 
-     * @param comment blog comment to save to the database
-     */
-    public void saveOrUpdate(BlogPostComment comment) {
-        if(comment.isNew()) {
-            template.update("INSERT INTO blogpostcomment (blogpostid, commentauthor, commentcontent, commentpublishdate) VALUES (?, ?, ?, ?)",
-                    comment.getBlogPost().getBlogPostId(),
-                    comment.getAuthor(),
-                    comment.getContent(),
-                    new Timestamp(System.currentTimeMillis()));
-        } else {
-            template.update("update blogpostcomment set commentauthor=?, commentcontent=?,commentpublishdate=? where blogpostcommentid=?",
-                    comment.getAuthor(),
-                    comment.getContent(),
-                    comment.getPublishDate().toDate(),
-                    comment.getBlogPostCommentId());
-        }
-    }
-
-    /**
-     * Return a list of comments for a given blog post.
-     * 
-     * @param post The blog post to read comments from
-     * @return List of comments for this blog post.
-     */
-    public List<BlogPostComment> getComments(final BlogPost post) {
-        String sql = "select blogpostcommentid, commentauthor, commentcontent, commentpublishdate from blogpostcomment where blogpostid=?";
-        return template.query(sql, new RowMapper<BlogPostComment>() {
-            @Override
-            public BlogPostComment mapRow(ResultSet rs, int i) throws SQLException {
-                BlogPostComment comment = new BlogPostComment(post);
-                comment.setAuthor(rs.getString("commentauthor"));
-                comment.setContent(rs.getString("commentcontent"));
-                comment.setPublishDate(rs.getTimestamp("commentpublishdate"));
-                return comment;
-            }
-        }, post.getBlogPostId());
-    }
 }

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+import no.kantega.blog.dao.BlogPostDao;
 
 import static no.kantega.blog.services.Services.getService;
 
@@ -32,11 +33,12 @@ public class BlogSessionListener implements HttpSessionListener {
         HttpSession session = sessionEvent.getSession();
         try {
             BlogDao dao = getService(BlogDao.class, session.getServletContext());
+            BlogPostDao postDao = getService(BlogPostDao.class, session.getServletContext());
 
             Map<String, BlogPost> blogPostCache = new HashMap<>();
 
             for(Blog blog : dao.getAllBlogs()) {
-                for(BlogPost post : dao.getBlogPosts(blog)) {
+                for(BlogPost post : postDao.getBlogPosts(blog)) {
                     blogPostCache.put(blog.getLinkId() +"/" + post.getLinkId(), post);
                 }
             }

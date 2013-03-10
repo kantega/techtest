@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import no.kantega.blog.dao.BlogPostCommentDao;
+import no.kantega.blog.dao.BlogPostDao;
 
 import static no.kantega.blog.services.Services.getService;
 
@@ -29,13 +31,17 @@ import static no.kantega.blog.services.Services.getService;
 @WebServlet(urlPatterns = "/blog/*")
 public class BlogServlet extends HttpServlet {
 
-    private BlogDao dao;
+    private transient BlogDao dao;
+    private transient BlogPostDao postDao;
+    private transient BlogPostCommentDao commentDao;
     private volatile String content;
-    private Stats stats;
+    private transient Stats stats;
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         this.dao = getService(BlogDao.class, servletConfig.getServletContext());
+        this.postDao = getService(BlogPostDao.class, servletConfig.getServletContext());
+        this.commentDao = getService(BlogPostCommentDao.class, servletConfig.getServletContext());
         this.stats = getService(Stats.class, servletConfig.getServletContext());
     }
 
@@ -45,14 +51,14 @@ public class BlogServlet extends HttpServlet {
             BlogPost post = getBlogPost(req);
             countBlog(post.getBlog());
             req.setAttribute("post", post);
-            req.setAttribute("comments", dao.getComments(post));
+            req.setAttribute("comments", commentDao.getComments(post));
             req.getRequestDispatcher("/WEB-INF/jsp/post.jsp").forward(req, resp);
 
         } else {
             Blog blog = getBlog(req);
             countBlog(blog);
             req.setAttribute("blog", blog);
-            req.setAttribute("posts", dao.getBlogPosts(blog));
+            req.setAttribute("posts", postDao.getBlogPosts(blog));
             req.getRequestDispatcher("/WEB-INF/jsp/blog.jsp").forward(req, resp);
         }
     }
@@ -80,11 +86,11 @@ public class BlogServlet extends HttpServlet {
         String blogName = URLDecoder.decode(requestURI.substring(0, requestURI.indexOf('/')), "utf-8");
         String postName = URLDecoder.decode(requestURI.substring(requestURI.indexOf('/')+1), "utf-8");
 
-        return dao.getBlogPost(dao.getBlogByName(blogName), postName);
+        return postDao.getBlogPost(dao.getBlogByName(blogName), postName);
     }
 
     /**
-     * Extract the interresting part of the URI.
+     * Extract the interesting part of the URI.
      */
     private String getRequestUri(HttpServletRequest req) {
         return req.getRequestURI().substring("/blog/".length());
@@ -121,7 +127,7 @@ public class BlogServlet extends HttpServlet {
         BlogPostComment comment = new BlogPostComment(post);
         comment.setAuthor(author);
         comment.setContent(content);
-        dao.saveOrUpdate(comment);
+        commentDao.saveOrUpdate(comment);
         return post.getLinkId();
     }
 
@@ -133,7 +139,7 @@ public class BlogServlet extends HttpServlet {
         BlogPost post = new BlogPost(blog);
         post.setTitle(title);
         post.setContent(blogContent);
-        dao.saveOrUpdate(post);
+        postDao.saveOrUpdate(post);
 
         return blog.getLinkId();
     }

@@ -15,6 +15,8 @@ import java.util.EnumSet;
 import java.util.Set;
 import java.util.logging.Logger;
 import no.kantega.blog.dao.BlogDao;
+import no.kantega.blog.dao.BlogPostCommentDao;
+import no.kantega.blog.dao.BlogPostDao;
 
 import static no.kantega.blog.services.Services.addService;
 import static no.kantega.blog.services.Services.getService;
@@ -42,13 +44,14 @@ public class BlogInitializer implements ServletContainerInitializer {
             throw new ServletException("Failed initializing database", ioex);
         }
         addService(BlogDao.class, new BlogDao(getService(DataSource.class, servletContext)), servletContext);
+        addService(BlogPostDao.class, new BlogPostDao(getService(DataSource.class, servletContext)), servletContext);
+        addService(BlogPostCommentDao.class, new BlogPostCommentDao(getService(DataSource.class, servletContext)), servletContext);
         configureCharEncFilter(servletContext);
         configureErrorFilter(servletContext);
         configureStats(servletContext);
     }
 
     private void configureStats(ServletContext servletContext) {
-
         addService(Stats.class, new Stats(), servletContext);
     }
 
