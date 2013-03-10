@@ -23,36 +23,37 @@
 
             <p>thanks for fixing the nightly restart problem - 
                now we have a weekly restart problem instead :(</p>
+
+            <p>We didn't see this problem in the previous version, could the 
+                reason be the new <a href="/popularity">popularity</a> page that was added
+                in the latest version?</p>
             
-             
             <p>This breaks the <a href="sla.jsp">SLA</a>!</p>
             
             <p>Take a look at the attached stacktrace...</p>
 
 <pre>
-[STDERR] 2013-03-08 13:47:37.458:WARN:oejs.ServletHandler:qtp1493293146-16: Error for /blogs
+[STDERR] 2013-03-10 17:31:21.844:WARN:oejs.ServletHandler:qtp1867424930-27: Error for /popularity
 [STDERR] java.lang.OutOfMemoryError: Java heap space
-[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.createChunk(DeferredDocumentImpl.java:1862)
-[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.ensureCapacity(DeferredDocumentImpl.java:1769)
-[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.createNode(DeferredDocumentImpl.java:1786)
-[STDERR] 	at org.apache.xerces.dom.DeferredDocumentImpl.createDeferredDocument(DeferredDocumentImpl.java:220)
-[STDERR] 	at org.apache.xerces.parsers.AbstractDOMParser.startDocument(AbstractDOMParser.java:714)
-[STDERR] 	at org.apache.xerces.impl.XMLNamespaceBinder.startDocument(XMLNamespaceBinder.java:444)
-[STDERR] 	at org.apache.xerces.impl.dtd.XMLDTDValidator.startDocument(XMLDTDValidator.java:644)
-[STDERR] 	at org.apache.xerces.impl.XMLDocumentScannerImpl.startEntity(XMLDocumentScannerImpl.java:431)
-[STDERR] 	at org.apache.xerces.impl.XMLEntityManager.startEntity(XMLEntityManager.java:878)
-[STDERR] 	at org.apache.xerces.impl.XMLEntityManager.startDocumentEntity(XMLEntityManager.java:741)
-[STDERR] 	at org.apache.xerces.impl.XMLDocumentScannerImpl.setInputSource(XMLDocumentScannerImpl.java:260)
-[STDERR] 	at org.apache.xerces.parsers.DTDConfiguration.parse(DTDConfiguration.java:498)
-[STDERR] 	at org.apache.xerces.parsers.DTDConfiguration.parse(DTDConfiguration.java:580)
-[STDERR] 	at org.apache.xerces.parsers.XMLParser.parse(XMLParser.java:152)
-[STDERR] 	at org.apache.xerces.parsers.DOMParser.parse(DOMParser.java:253)
-[STDERR] 	at org.apache.xerces.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:201)
-[STDERR] 	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
-[STDERR] 	at no.kantega.blog.listener.BlogSessionListener.getBlogConfig(BlogSessionListener.java:70)
-[STDERR] 	at no.kantega.blog.listener.BlogSessionListener.sessionCreated(BlogSessionListener.java:58)
-[STDERR] 	at org.eclipse.jetty.server.session.AbstractSessionManager.addSession(AbstractSessionManager.java:721)
-
+[STDERR]        at org.apache.xerces.dom.DeferredDocumentImpl.createChunk(DeferredDocumentImpl.java:1873)
+[STDERR]        at org.apache.xerces.dom.DeferredDocumentImpl.ensureCapacity(DeferredDocumentImpl.java:1767)
+[STDERR]        at org.apache.xerces.dom.DeferredDocumentImpl.createNode(DeferredDocumentImpl.java:1786)
+[STDERR]        at org.apache.xerces.dom.DeferredDocumentImpl.createDeferredDocument(DeferredDocumentImpl.java:220)
+[STDERR]        at org.apache.xerces.parsers.AbstractDOMParser.startDocument(AbstractDOMParser.java:714)
+[STDERR]        at org.apache.xerces.impl.XMLNamespaceBinder.startDocument(XMLNamespaceBinder.java:444)
+[STDERR]        at org.apache.xerces.impl.dtd.XMLDTDValidator.startDocument(XMLDTDValidator.java:644)
+[STDERR]        at org.apache.xerces.impl.XMLDocumentScannerImpl.startEntity(XMLDocumentScannerImpl.java:431)
+[STDERR]        at org.apache.xerces.impl.XMLEntityManager.startEntity(XMLEntityManager.java:878)
+[STDERR]        at org.apache.xerces.impl.XMLEntityManager.startDocumentEntity(XMLEntityManager.java:741)
+[STDERR]        at org.apache.xerces.impl.XMLDocumentScannerImpl.setInputSource(XMLDocumentScannerImpl.java:260)
+[STDERR]        at org.apache.xerces.parsers.DTDConfiguration.parse(DTDConfiguration.java:498)
+[STDERR]        at org.apache.xerces.parsers.DTDConfiguration.parse(DTDConfiguration.java:580)
+[STDERR]        at org.apache.xerces.parsers.XMLParser.parse(XMLParser.java:152)
+[STDERR]        at org.apache.xerces.parsers.DOMParser.parse(DOMParser.java:253)
+[STDERR]        at org.apache.xerces.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:201)
+[STDERR]        at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:121)
+[STDERR]        at no.kantega.blog.servlets.PopularityServlet.getBlogConfig(PopularityServlet.java:46)
+[STDERR]        at no.kantega.blog.servlets.PopularityServlet.doGet(PopularityServlet.java:37)
 </pre>
             
             <p>Regards,<br/> 
@@ -66,9 +67,10 @@
     
     <p class="tip">Use load profile and data from scalability test to find good setting for the test.</p>
     
+    <p class="tip">...but remember to update it with information about the new page.</p>
+    
     <p class="tip">
-        Memory leaks with session? Use of Cookie manager.
-        Show JVisual VM.
+        Use jvisualvm (in the same directoy as the java executable) on the org.eclipse.jettymaven.plugin.Starter process to follow memory usage
     </p>
     
     <a href="/">Back...</a>

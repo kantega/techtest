@@ -21,7 +21,8 @@ public class BlogSessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent sessionEvent) {
         HttpSession session = sessionEvent.getSession();
-        session.setMaxInactiveInterval(8 * 60 * 60); // 8 hours sessions
+        // 8 hours sessions
+        session.setMaxInactiveInterval(8 * 60 * 60);
         sessions.put(session.getId(), session);
         getTotalSessionCount.incrementAndGet();
     }
