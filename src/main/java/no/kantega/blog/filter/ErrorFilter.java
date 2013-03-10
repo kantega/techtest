@@ -7,12 +7,19 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- *
+ * Filter that give nice HTTP 500 errors
  */
 public class ErrorFilter implements Filter {
+
+    /**
+     * Initialize filter.
+     * 
+     * @param filterConfig Configuration for filter
+     * @throws ServletException If filter can't be initialized
+     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        // empty
     }
 
     @Override
@@ -31,8 +38,11 @@ public class ErrorFilter implements Filter {
 
     }
 
+    /**
+     * Destroy filter on shutdown - not used.
+     */
     @Override
     public void destroy() {
-
+        // empty
     }
 }
