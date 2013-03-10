@@ -17,7 +17,7 @@ public final class DBInitializer {
 
     private static final String DB_ALREADY_EXISTS = "X0Y32";
     
-    private static List<String> STATEMENTS = Arrays.asList(
+    private static final List<String> STATEMENTS = Arrays.asList(
         "create table blog (blogid  integer NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                 " blogname varchar(255) NOT NULL UNIQUE, " +
                 " color varchar(7) )",
