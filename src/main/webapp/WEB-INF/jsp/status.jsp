@@ -8,7 +8,7 @@
     <h1>System status</h1>
 
     <h2>Database</h2>
-<table id="dataSourceInfo" summary="information about database system resource usage">
+<table id="dataSourceInfo" class="datatable" summary="information about database system resource usage">
     <tr>
         <th>Datasource:</th>
         <td>${dataSource['class'].simpleName}</td>
@@ -29,7 +29,7 @@
 
     <h2>Memory</h2>
 
-<table summary="information about used memory">
+<table class="datatable" summary="information about used memory">
     <thead>
     <tr>
         <th>Mem</th>
@@ -72,7 +72,7 @@
 </table>
 
     <h2>Sessions</h2>
-    <table>
+    <table class="datatable">
         <tr>
             <th>
                 Current active sessions:

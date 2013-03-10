@@ -147,6 +147,6 @@ td.number {
     text-align: right;
     padding-left: 1em;
 }
-tr {
+.datatable tr {
     border-bottom: 1px solid #000000;
 }

@@ -25,8 +25,8 @@
     
     <p>The following statistics are also taken from the production environment, over a period of 1 hour.</p>
     
-    <table>
-        <thead
+    <table class="datatable">
+        <thead>
         <tr>
             <th>URL</th>
             <th>Request count</th>
