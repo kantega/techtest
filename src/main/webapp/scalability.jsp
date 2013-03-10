@@ -6,7 +6,7 @@
     <h1>Scalability</h1>
     
 
-    <p class="ingress">Jørgen's new blogpost hit Slashdot, but we are just hanging.</p>
+    <p class="ingress">Jï¿½rgen's new blogpost hit Slashdot, but we are just hanging.</p>
         
     <div class="email">
         <div class="mailheader">
@@ -19,7 +19,7 @@
         <div class="mailbody">
             <p>Hi,</p> 
 
-            <p>I wanted to read Jørgen's new cool blog about band music which
+            <p>I wanted to read Jï¿½rgen's new cool blog about band music which
                I found a reference to from Slashdot, but unfortunately your
                web page doesn't respond.</p>
 
@@ -32,11 +32,11 @@
     
     <h2>Task</h2>
     
-    <p>Write a performance test uses the <a href="loadProfile.jsp">load profile</a> and check how many simultaneous users we can handle within the <a href="sla.jsp">SLA</a>.</p>
+    <p>Write a performance test uses the <a href="loadProfile.jsp">load profile</a> and check how many requests we can handle within the <a href="sla.jsp">SLA</a>.</p>
     
-    <p class="tip">Start with a few users, increase the number of users.</p>
+    <p class="tip">Start with a low number of requests, and increase.</p>
     
-    <p class="tip">Stop adding users when you breach the SLA</p>
+    <p class="tip">Stop increasing number of requests when you breach the SLA</p>
 
     <a href="/">Back...</a>
         

@@ -65,9 +65,9 @@
     
     <p>Run a stability test to check what happens when you test the software for a while.</p>
     
-    <p class="tip">Use load profile and data from scalability test to find good setting for the test.</p>
+    <p class="tip">Use load profile and data from scalability test to find a good setting for the test.</p>
     
-    <p class="tip">...but remember to update it with information about the new page.</p>
+    <p class="tip">...but remember to update with information about the new page.</p>
     
     <p class="tip">
         Use jvisualvm (in the same directoy as the java executable) on the org.eclipse.jettymaven.plugin.Starter process to follow memory usage

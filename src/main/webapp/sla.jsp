@@ -7,11 +7,11 @@
 
     <h2>Response rate</h2>
 
-    <p>All requests must be answered within 1 second.</p>
+    <p>All requests must be answered within 200 milliseconds.</p>
     
     <h2>Errors</h2>
 
-    <p>We should have less than 0.5% error.</p>
+    <p>We should have less than 0.2% error.</p>
     
     <h2>Availability</h2>
     

@@ -40,7 +40,7 @@
     
     <h2>Task</h2>
     
-    <p>Write a performance test that checks what happens when several simultaneous users write comments.</p>
+    <p>Write a performance test that checks what happens when several comments are written simultaneously.</p>
     
     <p class="tip">Remember to check that they can read their own comment.</p>
     
