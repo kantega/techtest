@@ -10,19 +10,19 @@
     <h2>Database</h2>
 <table id="dataSourceInfo" class="datatable" summary="information about database system resource usage">
     <tr>
-        <th>Datasource:</th>
+        <th>Datasource:&nbsp;</th>
         <td>${dataSource['class'].simpleName}</td>
     </tr>
     <tr>
-        <th>maxActive:</th>
+        <th>Max active connections:&nbsp;</th>
         <td>${dataSource.maxActive}</td>
     </tr>
     <tr>
-        <th>numActive:</th>
+        <th>Active connections:&nbsp;</th>
         <td>${dataSource.numActive}</td>
     </tr>
     <tr>
-        <th>numIdle:</th>
+        <th>Idle connections:&nbsp;</th>
         <td>${dataSource.numIdle}</td>
     </tr>
 </table>

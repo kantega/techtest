@@ -21,7 +21,7 @@ public class BlogConfigTest {
 
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File("src/main/webapp/WEB-INF/blog-config.xml"));
 
-        assertEquals("Logo should have correct size", 33132, new BlogConfig(doc).getLogo().length);
+        assertEquals("Logo should have correct size", 49698, new BlogConfig(doc).getLogo().length);
     }
 
 }

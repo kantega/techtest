@@ -26,7 +26,8 @@
 
             <p>We didn't see this problem in the previous version, could the 
                 reason be the new <a href="/popularity">popularity</a> page that was added
-                in the latest version?</p>
+                in the latest version? After analyzing access logs from production,
+                we see that this page is accessed as often as the frontpage.</p>
             
             <p>This breaks the <a href="sla.jsp">SLA</a>!</p>
             

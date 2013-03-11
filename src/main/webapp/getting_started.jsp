@@ -45,6 +45,8 @@
     <h2>Step 3: Build</h2>
     
     <p>We use Apache Maven to builde the source code. It will download all dependencies that we need.</p>
+
+    <p>NB: remember to put Java 7 (JAVA_HOME) and Apache Maven (mvn) in your PATH.</p>
     
     <p class="command">mvn clean install</p>
     
@@ -63,10 +65,7 @@
     
     <h3>Blog</h3>
     
-    <p>If you have started a new shell/terminal/command line window after you 
-       started the database, remember to put Java 7 and Apache Maven in your PATH.</p>
-    
-    <p>The blog can be started with:</p>
+    <p>To start the blog, run:</p>
 
     <p class="command">mvn jetty:run-forked</p>
     

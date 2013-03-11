@@ -11,7 +11,7 @@
         <li>Create your own blog</li>
         <li>Write a blog post</li>
         <li>Comment on it!</li>
-        <li>Log in as administrator</li>
+        <li>Log in as administrator (admin/admin)</li>
         <li>Delete a blog</li>
         <li>Check out the status page</li>
     </ul>

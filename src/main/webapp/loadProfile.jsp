@@ -11,7 +11,7 @@
         users/administrators are using the application.
     </p>
     <ul>
-        <li>Almost every user requesting the frontpage, continues on to a specific blog.</li>
+        <li>Almost every user requesting the frontpage, continues on to a blog.</li>
         <li>Having accessed a specific blog, around 50 percent create a blog post.</li>
         <li>On average, users write two comments during a session.</li>
         <li>Only 10 percent of the users creates a new blog when visiting the application.</li>
