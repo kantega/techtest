@@ -6,7 +6,7 @@
     <h1>Scalability</h1>
     
 
-    <p class="ingress">Jï¿½rgen's new blogpost hit Slashdot, but we are just hanging.</p>
+    <p class="ingress">Jørgen's new blogpost hit Slashdot, but we are just hanging.</p>
         
     <div class="email">
         <div class="mailheader">
@@ -19,7 +19,7 @@
         <div class="mailbody">
             <p>Hi,</p> 
 
-            <p>I wanted to read Jï¿½rgen's new cool blog about band music which
+            <p>I wanted to read Jørgen's new cool blog about band music which
                I found a reference to from Slashdot, but unfortunately your
                web page doesn't respond.</p>
 
