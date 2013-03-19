@@ -26,7 +26,9 @@
                 suddenly some other comment came in place of mine.</p>
 
             <p>The webpage says that I said Eirik looks so good in the new polka-dot dress, but
-                that is not what I wrote! In fact I think it made him look fat and old.</p>
+               that is not what I wrote! In fact I think it made him look fat and old.
+               It is only my comment that is changed - not my name - so it looks like I have
+               written the comment :(</p>
 
             <p>This is the second time this happens to me during lunch hour. It never happens
                 other times of the day.</p>
