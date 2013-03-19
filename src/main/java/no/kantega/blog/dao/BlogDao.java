@@ -1,12 +1,12 @@
 package no.kantega.blog.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import javax.sql.DataSource;
 import no.kantega.blog.model.Blog;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
-import javax.sql.DataSource;
-import java.sql.*;
-import java.util.List;
 
 /**
  * Database abstraction layer.
@@ -64,19 +64,9 @@ public class BlogDao {
      */
     public void saveOrUpdate(Blog blog) {
         if (blog.isNew()) {
-            Connection con;
-            try {
-                con = template.getDataSource().getConnection();
-                PreparedStatement statement = con.prepareStatement("INSERT INTO blog (blogname, color) VALUES (?, ?)");
-                statement.setString(1, blog.getName());
-                statement.setString(2, blog.getColor());
-                statement.executeUpdate();
-                con.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            template.update("INSERT INTO blog (blogname, color) VALUES (?, ?)", blog.getName(), blog.getColor());
         } else {
-            template.update("update blog set blogname=?, color=? where blogid=?", blog.getName(), blog.getColor(), blog.getId());
+            template.update("UPDATE blog SET blogname=?, color=? WHERE blogid=?", blog.getName(), blog.getColor(), blog.getId());
         }
     }
 
