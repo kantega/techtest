@@ -1,0 +1,171 @@
+First test
+
+To get to know the tool we are using, we are going to create a simple test together.
+
+JMeter is only half-way translated, so I am going to use the english names. To change: Options -> Choose Language -> English
+
+The goal is to write a test that can navigate in blogs and create new blogs.
+
+1. Start JMeter
+
+JMeter has two elements on the left side, we are going to work on the test plan.
+
+To get started we are going to add some default elements:
+- Rightclick Test Plan -> Add -> Config -> HTTP Request Default
+  - Servername: localhost
+  - Port: 8080
+  - Content encoding: utf-8
+  - Retrieve all embedded resources
+- Rightclick Test Plan -> Add -> Config -> HTTP Cookie Manager
+  - Clear cookiies each iteration
+
+We also want to see the results of our tests, so we add some reports:
+
+- Rightclick Test Plan -> Add -> Listener -> View Results in Tree
+- Rightclick Test Plan -> Add -> Listener -> Summary Report
+- Rightclick Test Plan -> Add -> Listener -> Graph Results
+
+2. Navigate blogs
+
+Ok, now we are ready to go. Lets start by writing a test case that shows all blogs and navigates to one of them,
+
+We are later going to run this many times with many users, so we add a 
+
+- Rightclick Test Plan -> Add -> Threads (Users) -> Thread group
+  - Number of threads (users): Leave at 1 while we develop test, can increase later
+  - Ramp up period: Leave at 1 while we develop - increase later
+  - Loop count: Leave at 1 while we develop - increase later
+
+Inside the thread group we will add some structure
+
+- Rightclick Thread Group -> Add -> Logic Controller -> Simple Controller
+  - Name: Navigate Blog
+
+First we will open the Blogs page to get a list of all of them:
+
+- Rightclick Navigate Blog -> Add -> Sampler -> HTTP Request
+  - Name: Blogs
+  - Path: /blogs
+  - Method: GET
+
+We can see what happens.
+
+Play -> Save -> View Results Tree -> HTTP Request is Green
+View as HTML
+
+We are going to add an Assertion to make sure this is the result we are getting as we run the test
+
+- Rightclick Blogs -> Add -> Assertion -> Response Assertion
+  - Add: SuperBlog (Main sample only, text contains)
+
+The next thing the test is going to do is to click on one of the blogs 
+
+(if you have no blogs - create one manually and run the test again)
+
+- Rightclick Navigate Blog -> Add -> Sampler -> HTTP Request
+  - Name: Single Blog
+  - Path: ???
+  - Method: GET
+
+Look at the previous page (blogs) - the paths change with the names. To make the test robust, we extract the links.
+
+How do we find the links?
+
+- View results tree -> Blogs -> Reg Exp Tester
+  - Links have an <a href="blog/something"> pattern
+  - Regexp: <a href=".*"> - too many matches, match finds too much
+  - Regexp: <a href="blog/.*"> - correct number of matches but find too much
+  - Regexp: <a href="(blog/.*)"> - Yay!
+
+Lets extract them from the result
+
+- Rightclick Blogs -> Add -> Post Processor -> Regular Expression Extractor
+  - Reference Name: blogurl
+  - Regular Expression: <a href="(blog/.*)">
+  - Template: $1$
+  - Match No: 0
+
+- Clear - Run
+
+How do we know it worked?
+
+- Rightclick Navigate Blog -> Add -> Sampler -> Debug Sampler
+
+- Clear - Run - View Results Tree - Debug Sampler - Response Data
+
+- Single Blog
+  - Path: ${blogurl}
+
+- Clear - Run - View Results Tree - HTML
+
+It worked - but we haven't asserted anything
+
+- Rightclick Single Blog  -> Add -> Assertion -> Response Assertion
+  - Add: ${blogurl} (Main sample only, text contains)
+
+- Clear - Run - check that it is green
+
+3. Create new blog
+
+OK, so far we have only been reading blogs, now we will create a new one.
+
+- Rightclick Thread Group -> Add -> Logic Controller -> Simple Controller
+  - Name: New Blog
+
+- Rightclick New Blog -> Add -> Sample -> HTTP Request
+  - Name: BlogsAdd
+  - Path: /blogs
+
+- Rightclick New Blog -> Add -> Assertion -> Response Assertion
+  - Add: Create new blog
+
+- Rightclick New Blog -> Add -> Sample -> HTTP Request
+  - Name: Create Blog
+  - Path: blogs
+  - Method: POST - it is a form
+  - Parameters: Look in the results tree
+    - blogname: performancetestblog
+    - color: #ffffff
+
+- clear - run - view results tree
+
+- Rightclick Create Blog -> Add -> Assertion -> Response Assertion
+  - Add: performancetestblog
+
+- Run Again
+- It fails "The statement was aborted because it would have caused a duplicate key value in a unique or primary key constraint"
+
+=> We must have unique names
+
+- Rightclick New Blog -> Add -> Config element -> Random variable
+  - Variable Name: blogid
+  - Min: 1
+  - Max: 99999999999
+  - Per Thread/User: True
+
+- Move it before BlogsNew
+- Add Debug Sampler to New Blog
+
+- Edit CreateBlog
+  - Blog name: Add _${blogid}
+
+- Edit Response Assertion
+  - Add _${blogid}
+
+OK, now we have a test. Try to run more.
+
+- Thread Group
+  - Number of threads (users): 5
+  - Loop conuter: 5
+  - Ramp up: 5
+
+- View Summary Report
+- View Graph Report
+
+We can adjust the speed
+
+- Rightclick Thread Group -> Add -> Timer -> Constant Throughput Timer
+  - Calculate based on: All Active Threads
+  - Throughput: 120 / minute
+
+- Clean - Run - View Summary
