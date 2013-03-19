@@ -4,7 +4,10 @@
 
 <c:set var="main" scope="request">
     <h1>Scalability</h1>
-    
+    <p class="difficulty">
+        <b>Difficulty: </b><span class="star-3">3</span><br/>
+        <b>Time: </b><span class="clock-3">3</span>
+    </p>    
 
     <p class="ingress">Jørgen's new blogpost hit Slashdot, but we are just hanging.</p>
         

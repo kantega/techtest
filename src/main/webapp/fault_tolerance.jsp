@@ -4,7 +4,10 @@
 
 <c:set var="main" scope="request">
     <h1>Fault Tolerance</h1>
-    
+    <p class="difficulty">
+        <b>Difficulty: </b><span class="star-1">1</span><br/>
+        <b>Time: </b><span class="clock-1">1</span>
+    </p>
 
     <p class="ingress">When we put the blog in production, and started taking backup of the database, we found
         a serious problem.</p>

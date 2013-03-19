@@ -4,6 +4,10 @@
 
 <c:set var="main" scope="request">
     <h1>Create a blog</h1>
+    <p class="difficulty">
+        <b>Difficulty: </b><span class="star-1">1</span><br/>
+        <b>Time: </b><span class="clock-1">1</span>
+    </p>
 
     <p class="ingress">To get to know the product you are testing we would like you to explore it a little.</p>
     

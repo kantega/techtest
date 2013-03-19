@@ -4,6 +4,10 @@
 
 <c:set var="main" scope="request">
     <h1>Stability</h1>
+    <p class="difficulty">
+        <b>Difficulty: </b><span class="star-1">1</span><br/>
+        <b>Time: </b><span class="clock-3">3</span>
+    </p>    
     
     <p class="ingress">After it has been running for a while the blog server start getting hickup.
         Suddenly it has 10 second periods where it stops responding to page views.

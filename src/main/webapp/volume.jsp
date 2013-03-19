@@ -5,7 +5,10 @@
 
 <c:set var="main" scope="request">
     <h1>Volume</h1>
-    
+    <p class="difficulty">
+        <b>Difficulty: </b><span class="star-2">2</span><br/>
+        <b>Time: </b><span class="clock-2">2</span>
+    </p>
 
     <p class="ingress">Some of out bloggers are on stereoids. We think it is because of the
        new feature to automatically get instagrams and tweets up as blog

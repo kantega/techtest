@@ -4,13 +4,14 @@
 
 <c:set var="main" scope="request">
     <h1>Concurrency</h1>
-    
+    <p class="difficulty">
+        <b>Difficulty: </b><span class="star-2">2</span><br/>
+        <b>Time: </b><span class="clock-2">2</span>
+    </p>
 
     <p class="ingress">Lately we have been seeing an increasing amount of emails like the one below, especially during lunch hour.
         We think this might happen more often now that we have gotten increased usage with new and popular blogs.</p>
-    
 
-    
     <div class="email">
         <div class="mailheader">
             <p><b>From:</b> Fashin Freak &lt;fashion.freak@gmail.com&gt;</p>

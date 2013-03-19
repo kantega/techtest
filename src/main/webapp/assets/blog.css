@@ -150,3 +150,32 @@ td.number {
 .datatable tr {
     border-bottom: 1px solid #000000;
 }
+.difficulty {
+    border: 1px solid #999;
+    background-color: #eee;
+    float: right;
+    width: 150px;
+    margin: 5px;
+    padding: 2px;
+}
+.star-1, .star-2, .star-3, .clock-1, .clock-2, .clock-3 {
+    font-weight: bold;
+}
+.star-1:before {
+    content: "\2605\2606\2606 ";    
+}
+.star-2:before {
+    content: "\2605\2605\2606 ";    
+}
+.star-3:before {
+    content: "\2605\2605\2605 ";    
+}
+.clock-1:before {
+    content: "\231a\263a\263c ";
+}
+.clock-2:before {
+    content: "\231a\231a\262e ";    
+}
+.clock-3:before {
+    content: "\231a\231a\231a ";    
+}
